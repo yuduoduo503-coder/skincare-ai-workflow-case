@@ -88,29 +88,45 @@
   svg{display:block;width:100%;height:auto}
 
   /* 手机模拟 */
-  .phones{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
-  .phone{width:230px;border-radius:32px;background:#1c1c22;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.25);flex:0 0 auto}
-  .screen{position:relative;border-radius:24px;overflow:hidden;height:430px;color:#fff}
-  .screen .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:90px;height:18px;background:#000;border-radius:12px;z-index:5}
-  .v1{background:linear-gradient(160deg,#f4d8d2,#caa49a)}
-  .v2{background:linear-gradient(160deg,#cfe9e4,#7fb8b0)}
-  .v3{background:linear-gradient(160deg,#e7dcc4,#c9a86a)}
-  .cream{position:absolute;left:50%;top:38%;transform:translateX(-50%);width:88px;height:96px;border-radius:14px 14px 18px 18px;
-    background:linear-gradient(#fffdfb,#f3ece4);box-shadow:0 10px 22px rgba(0,0,0,.2)}
-  .cream:after{content:"";position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:54px;height:18px;border-radius:6px;background:#e7d9cf}
-  .cream span{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-size:9px;color:#b08d6f;letter-spacing:.05em;text-align:center;width:100%}
-  .cap{position:absolute;left:12px;right:12px;bottom:54px;font-size:13px;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.4)}
-  .tags{position:absolute;left:12px;bottom:34px;font-size:11px;opacity:.92;text-shadow:0 1px 4px rgba(0,0,0,.4)}
-  .ui-right{position:absolute;right:10px;bottom:60px;display:flex;flex-direction:column;gap:16px;align-items:center;font-size:11px}
-  .ui-right .ico{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:2px}
-  .ad{position:absolute;top:14px;left:12px;background:rgba(0,0,0,.45);font-size:10px;padding:3px 7px;border-radius:5px;letter-spacing:.04em}
-  .shopbtn{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(255,255,255,.95);color:#1c1c22;font-size:11px;font-weight:700;text-align:center;padding:8px;border-radius:9px}
+  .phones{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+  .phone{width:236px;border-radius:34px;background:#15151b;padding:9px;box-shadow:0 18px 40px rgba(0,0,0,.28);flex:0 0 auto}
+  .screen{position:relative;border-radius:26px;overflow:hidden;height:460px;color:#fff}
+  .screen .scene{position:absolute;inset:0;width:100%;height:100%}
+  .screen .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:17px;background:#000;border-radius:12px;z-index:6}
+  /* 顶部 #ad 标 */
+  .ad{position:absolute;top:13px;left:11px;z-index:5;background:rgba(0,0,0,.5);font-size:10px;padding:3px 8px;border-radius:6px;letter-spacing:.03em}
+  /* 右侧互动栏 */
+  .ui-right{position:absolute;right:9px;bottom:128px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center;font-size:11px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .ui-right .ico{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:3px}
+  /* 底部信息区：纵向正常流，互不重叠 */
+  .overlay{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:34px 12px 12px;
+    background:linear-gradient(transparent,rgba(0,0,0,.18) 22%,rgba(0,0,0,.72))}
+  .overlay .handle{font-size:12px;font-weight:700;margin-bottom:5px}
+  .overlay .cap{font-size:12.5px;font-weight:600;line-height:1.45;margin-bottom:7px;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .overlay .tags{font-size:11px;color:#9ad8ff;margin-bottom:10px;line-height:1.4}
+  .overlay .shopbtn{display:block;background:rgba(255,255,255,.96);color:#15151b;font-size:11.5px;font-weight:700;text-align:center;padding:9px;border-radius:9px}
+  /* 场景内文字标签 */
+  .scene .tag{font:700 11px/1.2 inherit}
+  .scene .tag-s{font:600 9px/1.2 inherit}
 
   .foot{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 10px;border-top:1px solid var(--line);margin-top:40px}
   .backtop{position:fixed;right:22px;bottom:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
     width:46px;height:46px;border-radius:14px;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:18px;z-index:50}
   .legend{display:flex;gap:18px;justify-content:center;font-size:13px;color:var(--muted);margin-top:6px;flex-wrap:wrap}
   .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
+
+  /* MetaCode 能力卡 */
+  .metacard{background:linear-gradient(180deg,#fff 0,#fdf7f8 100%);border:1px solid #f0d9de}
+  .mc-head{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .mc-logo{display:inline-block;font-weight:800;font-size:15px;letter-spacing:.04em;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .mc-btn{padding:12px 22px;font-size:15px;white-space:nowrap}
+  .mc-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .mc-item .mc-ic{font-size:22px;display:block;margin-bottom:8px}
+  .mc-item b{font-size:15px}
+  .mc-item p{color:var(--muted);font-size:13.5px;margin-top:4px}
+  @media(max-width:880px){.mc-btn{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -118,7 +134,7 @@
 <!-- ================= 封面 ================= -->
 <header class="cover" id="cover">
   <div class="wrap">
-    <span class="badge">AI 业务工作流 · 案例模板</span>
+    <span class="badge">MetaCode 行业案例 · 电商</span>
     <h1>护肤品电商 × TikTok<br><span class="hl">AI 短视频引流 & 达人返佣</span> 工作流</h1>
     <p class="sub">以一款「神经酰胺屏障修复面霜」主攻欧美 TikTok 为例，完整演示<br>从选品洞察 → AI 批量出片 → 投放引流 → 达人建联 → 返佣结算 的全链路。</p>
     <p class="meta">案例市场：美国 / 英国 TikTok Shop　·　主推品类：Ceramide Barrier Repair Cream　·　文档版本 v1.0</p>
@@ -150,8 +166,8 @@
   <!-- 2 AI 工作流程 -->
   <section id="flow">
     <div class="kicker">AI Workflow</div>
-    <h2 class="sec"><span class="num">2</span>AI 工作流程（端到端主链路）</h2>
-    <p class="lead">一条可自动调度的流水线：人定策略、AI 干活、人做关键决策。下方为完整流程图。</p>
+    <h2 class="sec"><span class="num">2</span>AI 是怎么帮我们卖货的（全流程一图看懂）</h2>
+    <p class="lead">你可以把它想象成一条「自动生产线」：你只需要告诉它想卖什么，AI 就会一步步接力——<b>找准什么产品会火 → 写好视频脚本 → 自动做出视频 → 发到 TikTok 引流 → 找网红帮忙带货 → 卖出去自动算提成给网红</b>。整个过程不用你懂技术，关键决定（比如选哪个产品、合同怎么签）仍然由人来拍板。下面这张图就是完整流程。</p>
     <div class="card" style="margin-top:18px">
       <figure>
         <svg viewBox="0 0 1000 300" role="img" aria-label="AI 工作流程图">
@@ -165,43 +181,43 @@
             <g>
               <rect x="20"  y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
               <circle cx="50" cy="88" r="15" fill="url(#gp)"/><text x="50" y="93" fill="#fff" font-size="15" font-weight="700">①</text>
-              <text x="98" y="92" font-size="14" font-weight="700">选品洞察</text>
-              <text x="87" y="120" font-size="11" fill="#7c726b">趋势+评论分析</text>
-              <text x="87" y="135" font-size="11" fill="#7c726b">SKU 潜力打分</text>
+              <text x="98" y="92" font-size="14" font-weight="700">挑对产品</text>
+              <text x="87" y="120" font-size="11" fill="#7c726b">看什么会火</text>
+              <text x="87" y="135" font-size="11" fill="#7c726b">给产品打分</text>
             </g>
             <g>
               <rect x="195" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
               <circle cx="225" cy="88" r="15" fill="url(#gp)"/><text x="225" y="93" fill="#fff" font-size="15" font-weight="700">②</text>
-              <text x="273" y="92" font-size="14" font-weight="700">创意脚本</text>
-              <text x="262" y="120" font-size="11" fill="#7c726b">卖点+分镜</text>
-              <text x="262" y="135" font-size="11" fill="#7c726b">多版本 A/B</text>
+              <text x="273" y="92" font-size="14" font-weight="700">写脚本</text>
+              <text x="262" y="120" font-size="11" fill="#7c726b">想好怎么讲</text>
+              <text x="262" y="135" font-size="11" fill="#7c726b">多个版本</text>
             </g>
             <g>
               <rect x="370" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
               <circle cx="400" cy="88" r="15" fill="url(#gp)"/><text x="400" y="93" fill="#fff" font-size="15" font-weight="700">③</text>
-              <text x="448" y="92" font-size="14" font-weight="700">视频生产</text>
-              <text x="437" y="120" font-size="11" fill="#7c726b">数字人+配音</text>
-              <text x="437" y="135" font-size="11" fill="#7c726b">自动剪辑+合规</text>
+              <text x="448" y="92" font-size="14" font-weight="700">做视频</text>
+              <text x="437" y="120" font-size="11" fill="#7c726b">AI口播配音</text>
+              <text x="437" y="135" font-size="11" fill="#7c726b">自动剪+查违规</text>
             </g>
             <g>
               <rect x="545" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
               <circle cx="575" cy="88" r="15" fill="url(#gp)"/><text x="575" y="93" fill="#fff" font-size="15" font-weight="700">④</text>
-              <text x="623" y="92" font-size="14" font-weight="700">投放引流</text>
-              <text x="612" y="120" font-size="11" fill="#7c726b">标签+时机</text>
-              <text x="612" y="135" font-size="11" fill="#7c726b">实时调优加投</text>
+              <text x="623" y="92" font-size="14" font-weight="700">发布引流</text>
+              <text x="612" y="120" font-size="11" fill="#7c726b">挑好发布时间</text>
+              <text x="612" y="135" font-size="11" fill="#7c726b">火了就加投</text>
             </g>
             <g>
               <rect x="720" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
               <circle cx="750" cy="88" r="15" fill="url(#gp)"/><text x="750" y="93" fill="#fff" font-size="15" font-weight="700">⑤</text>
-              <text x="798" y="92" font-size="14" font-weight="700">达人建联</text>
-              <text x="787" y="120" font-size="11" fill="#7c726b">匹配打分</text>
-              <text x="787" y="135" font-size="11" fill="#7c726b">个性化邀约</text>
+              <text x="798" y="92" font-size="14" font-weight="700">找网红带货</text>
+              <text x="787" y="120" font-size="11" fill="#7c726b">筛合适网红</text>
+              <text x="787" y="135" font-size="11" fill="#7c726b">自动发邀约</text>
             </g>
             <g>
               <rect x="865" y="60" width="115" height="86" rx="14" fill="#2b9e94"/>
-              <text x="922" y="92" fill="#fff" font-size="14" font-weight="700">返佣结算</text>
-              <text x="922" y="118" fill="#dff3f1" font-size="11">链接归因</text>
-              <text x="922" y="133" fill="#dff3f1" font-size="11">自动算佣</text>
+              <text x="922" y="92" fill="#fff" font-size="14" font-weight="700">算提成</text>
+              <text x="922" y="118" fill="#dff3f1" font-size="11">认准谁带货</text>
+              <text x="922" y="133" fill="#dff3f1" font-size="11">自动结佣金</text>
             </g>
             <!-- arrows -->
             <g stroke="#e3b8bf" stroke-width="2" fill="none">
@@ -211,13 +227,13 @@
             </g>
             <!-- data loop -->
             <path d="M922 146 L922 210 L80 210 L80 148" stroke="#2b9e94" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#arr)"/>
-            <rect x="400" y="195" width="200" height="30" rx="15" fill="#e6f5f3"/>
-            <text x="500" y="214" text-anchor="middle" font-size="12" fill="#1f7d75" font-weight="700">数据回流闭环（GMV / CTR / ROI）</text>
+            <rect x="360" y="195" width="280" height="30" rx="15" fill="#e6f5f3"/>
+            <text x="500" y="214" text-anchor="middle" font-size="12" fill="#1f7d75" font-weight="700">销售数据自动回流，系统越用越聪明</text>
             <!-- human checkpoints -->
-            <text x="500" y="262" text-anchor="middle" font-size="12" fill="#7c726b">🔒 人工卡点：选品终审 · 合规审核 · 达人合同与报价拍板</text>
+            <text x="500" y="262" text-anchor="middle" font-size="12" fill="#7c726b">🔒 这几步仍由人来定：选哪个产品 · 内容是否合规 · 和网红的合同与报价</text>
           </g>
         </svg>
-        <figcaption>图 2-1　端到端 AI 工作流程：5 个 AI Agent 节点 + 返佣规则引擎 + 数据回流闭环</figcaption>
+        <figcaption>图 2-1　从挑产品到算提成，AI 一步步接力，你只管做决定</figcaption>
       </figure>
     </div>
   </section>
@@ -277,6 +293,26 @@
         <figcaption>图 3-1　AI 工作架构：编排层 → 5 智能体协作层 → 模型/数据能力层 → 数据资产飞轮</figcaption>
       </figure>
     </div>
+
+    <!-- MetaCode 产品能力展示 -->
+    <div class="card metacard" style="margin-top:18px">
+      <div class="mc-head">
+        <div>
+          <div class="mc-logo">⬢ MetaCode</div>
+          <h4 style="margin:6px 0 4px;font-size:19px">上面这套 AI 架构，由 MetaCode 一站式落地</h4>
+          <p style="color:var(--muted);font-size:15px;max-width:640px">不用懂代码，用自然语言描述需求，MetaCode 就能帮你把「选品 → 出片 → 投放 → 达人 → 返佣」的整条 AI 工作流搭起来、跑起来、并持续优化。</p>
+        </div>
+        <a class="btn btn-primary mc-btn" href="https://yuduoduo503-coder.github.io/metacode-public-page-v64-20260513/#install" target="_blank" rel="noopener">了解 MetaCode 产品 ↗</a>
+      </div>
+      <div class="grid g3" style="margin-top:20px">
+        <div class="mc-item"><span class="mc-ic">🗣️</span><b>自然语言搭工作流</b><p>一句话描述业务，自动生成可执行的多智能体流程，无需写代码。</p></div>
+        <div class="mc-item"><span class="mc-ic">🎬</span><b>内容批量生产</b><p>数字人口播、AI 配音、自动剪辑、多语种字幕，分钟级批量出片。</p></div>
+        <div class="mc-item"><span class="mc-ic">🛡️</span><b>合规自动护栏</b><p>内置 FDA / FTC / EU 违禁词库，发布前自动扫描与改写，降低下架风险。</p></div>
+        <div class="mc-item"><span class="mc-ic">🤝</span><b>达人智能建联</b><p>画像匹配筛选达人、个性化邀约话术、返佣 ROI 测算一键完成。</p></div>
+        <div class="mc-item"><span class="mc-ic">📊</span><b>数据回流飞轮</b><p>销售与投放数据自动回流，沉淀爆款库与达人评分卡，越用越准。</p></div>
+        <div class="mc-item"><span class="mc-ic">🔌</span><b>一键接入与编排</b><p>对接 TikTok、电商小店与各类模型能力，可视化编排、人工审批卡点。</p></div>
+      </div>
+    </div>
   </section>
 
   <!-- 4 模拟视频/展示效果 -->
@@ -286,34 +322,121 @@
     <p class="lead">同一卖点，AI 在数分钟内批量产出多版本短视频（美/英口音、不同钩子结构），并自动埋入 TikTok Shop 引导与合规标注。</p>
     <div class="card" style="margin-top:18px">
       <div class="phones">
-        <!-- video 1 -->
-        <div class="phone"><div class="screen v1"><span class="notch"></span>
+        <!-- video A · 成分党科学测评 -->
+        <div class="phone"><div class="screen"><span class="notch"></span>
           <span class="ad">Paid partnership · #ad</span>
-          <div class="cream"><span>CERAMIDE<br>CREAM</span></div>
+          <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="版本A画面：成分科学测评">
+            <defs><linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f4351"/><stop offset="1" stop-color="#c98aa0"/></linearGradient></defs>
+            <rect width="236" height="460" fill="url(#bgA)"/>
+            <!-- 顶部主题条 -->
+            <rect x="30" y="54" width="176" height="26" rx="13" fill="rgba(0,0,0,.34)"/>
+            <text x="118" y="71" text-anchor="middle" fill="#fff" class="tag">🔬 这瓶面霜里到底有什么</text>
+            <!-- 神经酰胺分子结构 -->
+            <g stroke="#ffd9e4" stroke-width="1.6" opacity=".9">
+              <line x1="118" y1="118" x2="86" y2="140"/><line x1="118" y1="118" x2="150" y2="140"/>
+              <line x1="86" y1="140" x2="86" y2="176"/><line x1="150" y1="140" x2="150" y2="176"/>
+              <line x1="86" y1="176" x2="118" y2="198"/><line x1="150" y1="176" x2="118" y2="198"/>
+            </g>
+            <g fill="#fff">
+              <circle cx="118" cy="118" r="7"/><circle cx="86" cy="140" r="6"/><circle cx="150" cy="140" r="6"/>
+              <circle cx="86" cy="176" r="6"/><circle cx="150" cy="176" r="6"/><circle cx="118" cy="198" r="8" fill="#ffe08a"/>
+            </g>
+            <text x="118" y="222" text-anchor="middle" fill="#ffe9ef" class="tag-s">CERAMIDE NP 分子</text>
+            <!-- 面霜瓶 -->
+            <rect x="86" y="244" width="64" height="70" rx="12" fill="#fffdfb"/>
+            <rect x="98" y="234" width="40" height="14" rx="5" fill="#ecd9cf"/>
+            <text x="118" y="276" text-anchor="middle" fill="#b08d6f" class="tag-s">CERAMIDE</text>
+            <text x="118" y="290" text-anchor="middle" fill="#b08d6f" class="tag-s">CREAM</text>
+            <!-- 成分占比条 -->
+            <g>
+              <text x="40" y="338" fill="#fff" class="tag-s">Ceramide NP</text><rect x="120" y="330" width="76" height="7" rx="3.5" fill="rgba(255,255,255,.3)"/><rect x="120" y="330" width="58" height="7" rx="3.5" fill="#ffe08a"/>
+              <text x="40" y="356" fill="#fff" class="tag-s">Squalane</text><rect x="120" y="348" width="76" height="7" rx="3.5" fill="rgba(255,255,255,.3)"/><rect x="120" y="348" width="44" height="7" rx="3.5" fill="#ffd9e4"/>
+            </g>
+          </svg>
           <div class="ui-right"><div><div class="ico">♡</div>48.2k</div><div><div class="ico">💬</div>1.3k</div><div><div class="ico">↗</div>2.1k</div></div>
-          <div class="cap">"I destroyed my skin barrier with too many actives…"</div>
-          <div class="tags">#skinbarrier #ceramides #skincycling #fyp</div>
-          <div class="shopbtn">🛒 Linked in TikTok Shop</div>
+          <div class="overlay">
+            <div class="handle">@theglowlab</div>
+            <div class="cap">"I destroyed my skin barrier with too many actives — here's the one ingredient that actually helped."</div>
+            <div class="tags">#skinbarrier #ceramides #skincycling #fyp</div>
+            <div class="shopbtn">🛒 Linked in TikTok Shop</div>
+          </div>
         </div><figcaption>版本 A · 成分党科学测评钩子</figcaption></div>
 
-        <!-- video 2 -->
-        <div class="phone"><div class="screen v2"><span class="notch"></span>
+        <!-- video B · Esthetician 教育种草 -->
+        <div class="phone"><div class="screen"><span class="notch"></span>
           <span class="ad">Paid partnership · #ad</span>
-          <div class="cream"><span>CERAMIDE<br>CREAM</span></div>
+          <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="版本B画面：护肤师教学">
+            <defs><linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6f68"/><stop offset="1" stop-color="#8fc9c1"/></linearGradient></defs>
+            <rect width="236" height="460" fill="url(#bgB)"/>
+            <!-- 护肤师头像 -->
+            <circle cx="118" cy="92" r="32" fill="#ffe6d8"/>
+            <circle cx="118" cy="78" r="13" fill="#5a4233"/>
+            <path d="M92 120 a26 22 0 0 1 52 0 Z" fill="#fff"/>
+            <rect x="150" y="74" width="40" height="20" rx="10" fill="#0f4f49"/>
+            <text x="170" y="88" text-anchor="middle" fill="#bdeee8" class="tag-s">PRO</text>
+            <text x="118" y="146" text-anchor="middle" fill="#fff" class="tag">Skin cycling · recovery night</text>
+            <!-- 四晚护理清单 -->
+            <g>
+              <rect x="30" y="162" width="176" height="30" rx="8" fill="rgba(255,255,255,.16)"/>
+              <text x="40" y="181" fill="#dff3f1" class="tag-s">Night 1 · Exfoliate</text>
+              <rect x="30" y="196" width="176" height="30" rx="8" fill="rgba(255,255,255,.16)"/>
+              <text x="40" y="215" fill="#dff3f1" class="tag-s">Night 2 · Retinoid</text>
+              <rect x="30" y="230" width="176" height="30" rx="8" fill="#ffffff"/>
+              <text x="40" y="249" fill="#1f6f68" class="tag-s">Night 3 · Recovery ✓</text>
+              <rect x="30" y="264" width="176" height="30" rx="8" fill="#ffffff"/>
+              <text x="40" y="283" fill="#1f6f68" class="tag-s">Night 4 · Recovery ✓</text>
+            </g>
+            <!-- 面霜瓶（recovery 用） -->
+            <rect x="160" y="232" width="34" height="56" rx="8" fill="#fffdfb"/>
+            <rect x="167" y="226" width="20" height="9" rx="3" fill="#cfe6e2"/>
+            <text x="177" y="266" text-anchor="middle" fill="#7fb0a9" class="tag-s">CERA</text>
+            <text x="118" y="318" text-anchor="middle" fill="#eafaf8" class="tag-s">恢复夜，就用这瓶修护面霜</text>
+          </svg>
           <div class="ui-right"><div><div class="ico">♡</div>71.9k</div><div><div class="ico">💬</div>2.6k</div><div><div class="ico">↗</div>4.4k</div></div>
-          <div class="cap">"Skin cycling recovery night — the only cream that helped it feel calm"</div>
-          <div class="tags">#skincycling #dermatologist #sensitiveskin</div>
-          <div class="shopbtn">🛒 Shop now · 18% off code</div>
+          <div class="overlay">
+            <div class="handle">@esther.skincoach</div>
+            <div class="cap">"Skin cycling recovery night — the only cream that helped my barrier feel calm again."</div>
+            <div class="tags">#skincycling #dermatologist #sensitiveskin</div>
+            <div class="shopbtn">🛒 Shop now · 18% off code</div>
+          </div>
         </div><figcaption>版本 B · Esthetician 教育种草钩子</figcaption></div>
 
-        <!-- video 3 -->
-        <div class="phone"><div class="screen v3"><span class="notch"></span>
+        <!-- video C · 素人 7 天 Before/After -->
+        <div class="phone"><div class="screen"><span class="notch"></span>
           <span class="ad">Paid partnership · #ad</span>
-          <div class="cream"><span>CERAMIDE<br>CREAM</span></div>
+          <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="版本C画面：7天前后对比">
+            <defs>
+              <linearGradient id="bgL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b08a6a"/><stop offset="1" stop-color="#d8b48a"/></linearGradient>
+              <linearGradient id="bgR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7c98f"/><stop offset="1" stop-color="#f6e6c4"/></linearGradient>
+            </defs>
+            <!-- 左：Day1 干燥脱屑 -->
+            <polygon points="0,0 132,0 104,460 0,460" fill="url(#bgL)"/>
+            <!-- 右：Day7 光滑 -->
+            <polygon points="132,0 236,0 236,460 104,460" fill="url(#bgR)"/>
+            <line x1="132" y1="0" x2="104" y2="460" stroke="#fff" stroke-width="3"/>
+            <!-- 脸颊：左侧粗糙红点 -->
+            <ellipse cx="62" cy="200" rx="42" ry="58" fill="#e8b79c"/>
+            <g fill="#c75f55" opacity=".7"><circle cx="48" cy="178" r="3"/><circle cx="70" cy="190" r="3.4"/><circle cx="55" cy="212" r="2.6"/><circle cx="74" cy="222" r="3"/><circle cx="60" cy="236" r="2.8"/><circle cx="44" cy="206" r="2.4"/></g>
+            <!-- 脸颊：右侧光滑 -->
+            <ellipse cx="172" cy="200" rx="42" ry="58" fill="#f3d8b8"/>
+            <ellipse cx="160" cy="184" rx="14" ry="20" fill="#fff" opacity=".45"/>
+            <!-- 标签 -->
+            <rect x="26" y="92" width="62" height="24" rx="12" fill="rgba(0,0,0,.4)"/><text x="57" y="108" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
+            <rect x="146" y="92" width="62" height="24" rx="12" fill="rgba(255,255,255,.85)"/><text x="177" y="108" text-anchor="middle" fill="#a06a2f" class="tag">DAY 7</text>
+            <text x="57" y="284" text-anchor="middle" fill="#fff" class="tag-s">干燥 · 泛红 · 脱屑</text>
+            <text x="177" y="284" text-anchor="middle" fill="#8a5a26" class="tag-s">平滑 · 舒缓 · 水润</text>
+            <!-- 面霜瓶 -->
+            <rect x="101" y="304" width="34" height="50" rx="8" fill="#fffdfb"/>
+            <rect x="108" y="298" width="20" height="9" rx="3" fill="#e7d3c4"/>
+            <text x="118" y="334" text-anchor="middle" fill="#b08d6f" class="tag-s">7-DAY</text>
+          </svg>
           <div class="ui-right"><div><div class="ico">♡</div>33.5k</div><div><div class="ico">💬</div>980</div><div><div class="ico">↗</div>1.7k</div></div>
-          <div class="cap">"7 days of dry, flaky winter skin → calm & comfortable"</div>
-          <div class="tags">#beforeandafter #dryskin #glowup</div>
-          <div class="shopbtn">🛒 Tap to shop the cream</div>
+          <div class="overlay">
+            <div class="handle">@mia.everyday</div>
+            <div class="cap">"7 days of dry, flaky winter skin → finally calm & comfortable. No filter."</div>
+            <div class="tags">#beforeandafter #dryskin #glowup</div>
+            <div class="shopbtn">🛒 Tap to shop the cream</div>
+          </div>
         </div><figcaption>版本 C · 素人 7 天 Before/After</figcaption></div>
       </div>
       <div class="note" style="margin-top:24px">
@@ -483,7 +606,7 @@
 
   <div class="foot">
     护肤品电商 × TikTok AI 短视频引流 & 达人返佣工作流 · 案例文档 v1.0　|　数据为模拟演示用途<br>
-    <span style="font-size:12px">🤖 本案例模板由 Claude Code 生成</span>
+    <span style="font-size:12px">⬢ 本案例模板由 MetaCode 生成</span>
   </div>
 
 </div>
