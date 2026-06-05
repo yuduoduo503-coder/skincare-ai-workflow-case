@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案例文档 · 护肤品电商 × TikTok AI 短视频引流工作流</title>
+<style>
+  :root{
+    --bg:#faf6f2; --ink:#2a2320; --muted:#7c726b; --line:#ece3da;
+    --rose:#e07a8b; --rose-d:#c75f72; --teal:#2b9e94; --teal-d:#1f7d75;
+    --gold:#d8a657; --card:#ffffff; --shadow:0 10px 30px rgba(80,55,45,.08);
+    --grad:linear-gradient(135deg,#e07a8b 0%,#d8a657 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- 封面 ---------- */
+  .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    background:radial-gradient(1200px 600px at 70% -10%,#fff0e9 0,transparent 60%),
+               radial-gradient(900px 500px at -10% 110%,#e8f6f4 0,transparent 55%),var(--bg);
+    text-align:center;position:relative;overflow:hidden}
+  .cover .badge{display:inline-block;align-self:center;background:#fff;border:1px solid var(--line);
+    color:var(--rose-d);font-weight:600;font-size:13px;letter-spacing:.08em;padding:7px 16px;border-radius:999px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .cover h1{font-size:clamp(30px,5.2vw,54px);line-height:1.18;font-weight:800;letter-spacing:-.5px}
+  .cover h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cover p.sub{margin:22px auto 0;max-width:680px;color:var(--muted);font-size:18px}
+  .cover .meta{margin-top:18px;color:var(--muted);font-size:14px}
+  .cta{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{cursor:pointer;border:none;font-size:16px;font-weight:600;padding:15px 30px;border-radius:14px;
+    transition:.25s transform,.25s box-shadow;text-decoration:none;display:inline-block}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 26px rgba(224,122,139,.35)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(224,122,139,.45)}
+  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:13px;animation:bob 1.8s infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---------- 文档体 ---------- */
+  .doc{display:none;padding:70px 0 120px}
+  .doc.show{display:block;animation:fade .5s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  section{margin:0 0 64px}
+  .kicker{color:var(--teal-d);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  h2.sec{font-size:clamp(24px,3.4vw,34px);font-weight:800;margin:8px 0 6px;letter-spacing:-.4px}
+  h2.sec .num{display:inline-block;width:38px;height:38px;line-height:38px;text-align:center;border-radius:11px;
+    background:var(--grad);color:#fff;font-size:18px;margin-right:12px;vertical-align:middle}
+  .lead{color:var(--muted);font-size:17px;max-width:780px;margin-bottom:8px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:880px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+  .bgcard h4{font-size:18px;margin-bottom:6px}
+  .bgcard .ic{color:var(--rose-d);display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;
+    background:linear-gradient(135deg,#fbeef0,#fdf4ec);font-size:25px;margin-bottom:13px}
+  .bgcard p{color:var(--muted);font-size:15px}
+
+  /* KPI 数字卡 */
+  .kpi{text-align:center;padding:22px 16px}
+  .kpi .big{font-size:40px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+  .kpi .lab{color:var(--muted);font-size:14px;margin-top:6px}
+  .kpi .delta{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:var(--teal-d);background:#e6f5f3;padding:3px 10px;border-radius:999px}
+
+  /* 表格 */
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line)}
+  th{background:#fbf3ee;color:var(--rose-d);font-weight:700;font-size:13px;letter-spacing:.03em}
+  tr:last-child td{border-bottom:none}
+  td.up{color:var(--teal-d);font-weight:700}
+  .tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
+
+  /* 步骤标签 */
+  .pill{display:inline-block;background:#fbeef0;color:var(--rose-d);font-weight:600;font-size:12px;padding:4px 11px;border-radius:999px;margin:0 6px 6px 0}
+  .pill.t{background:#e6f5f3;color:var(--teal-d)}
+
+  .note{background:#fff8ec;border:1px solid #f0e0bf;border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;font-size:14.5px;color:#6b5a32}
+  .ok{color:var(--teal-d);font-weight:700}
+  .no{color:var(--rose-d);font-weight:700}
+
+  figcaption{color:var(--muted);font-size:13px;text-align:center;margin-top:10px}
+  svg{display:block;width:100%;height:auto}
+
+  /* 手机模拟 */
+  .phones{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+  .phone{width:236px;border-radius:34px;background:#15151b;padding:9px;box-shadow:0 18px 40px rgba(0,0,0,.28);flex:0 0 auto}
+  .screen{position:relative;border-radius:26px;overflow:hidden;height:460px;color:#fff}
+  .screen .scene{position:absolute;inset:0;width:100%;height:100%}
+  .screen .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:17px;background:#000;border-radius:12px;z-index:6}
+  /* 顶部 #ad 标 */
+  .ad{position:absolute;top:13px;left:11px;z-index:5;background:rgba(0,0,0,.5);font-size:10px;padding:3px 8px;border-radius:6px;letter-spacing:.03em}
+  /* 右侧互动栏 */
+  .ui-right{position:absolute;right:9px;bottom:128px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center;font-size:11px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .ui-right .ico{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:3px}
+  /* 底部信息区：纵向正常流，互不重叠 */
+  .overlay{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:34px 12px 12px;
+    background:linear-gradient(transparent,rgba(0,0,0,.18) 22%,rgba(0,0,0,.72))}
+  .overlay .handle{font-size:12px;font-weight:700;margin-bottom:5px}
+  .overlay .cap{font-size:12.5px;font-weight:600;line-height:1.45;margin-bottom:7px;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .overlay .tags{font-size:11px;color:#9ad8ff;margin-bottom:10px;line-height:1.4}
+  .overlay .shopbtn{display:block;background:rgba(255,255,255,.96);color:#15151b;font-size:11.5px;font-weight:700;text-align:center;padding:9px;border-radius:9px}
+  /* 场景内文字标签 */
+  .scene .tag{font:700 11px/1.2 inherit}
+  .scene .tag-s{font:600 9px/1.2 inherit}
+
+  .foot{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 10px;border-top:1px solid var(--line);margin-top:40px}
+  .backtop{position:fixed;right:22px;bottom:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+    width:46px;height:46px;border-radius:14px;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:18px;z-index:50}
+  .legend{display:flex;gap:18px;justify-content:center;font-size:13px;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
+
+  /* 统一线性图标系统（替代旧 emoji） */
+  .icn{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em;display:inline-block;flex:0 0 auto}
+  .mc-logo .icn{color:var(--rose);stroke-width:1.9}
+  .foot .icn{stroke-width:1.9}
+
+  /* MetaCode 能力卡 */
+  .metacard{background:linear-gradient(180deg,#fff 0,#fdf7f8 100%);border:1px solid #f0d9de}
+  .mc-head{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .mc-logo{display:inline-block;font-weight:800;font-size:15px;letter-spacing:.04em;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .mc-btn{padding:12px 22px;font-size:15px;white-space:nowrap}
+  .mc-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .mc-item .mc-ic{color:var(--teal-d);display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;
+    background:#eef7f6;font-size:22px;margin-bottom:10px}
+  .mc-item b{font-size:15px}
+  .mc-item p{color:var(--muted);font-size:13.5px;margin-top:4px}
+  @media(max-width:880px){.mc-btn{width:100%;text-align:center}}
+</style>
+</head>
+<body>
+
+<!-- ===== SVG 图标精灵（线性风格，统一替代旧 emoji） ===== -->
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-bottle" viewBox="0 0 24 24"><path d="M10 2h4v3h-4z"/><path d="M9 5h6a3 3 0 0 1 3 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a3 3 0 0 1 3-3z"/><path d="M6 12h12"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M9.5 14.5l5-5M8 12l-2 2a3.5 3.5 0 0 0 5 5l2-2M16 12l2-2a3.5 3.5 0 0 0-5-5l-2 2"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M3 15h18M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M3 8l4-2 5 3 5-3 4 2M7 6v7M17 6v7"/><path d="M12 9l-3 3a1.5 1.5 0 0 0 2 2l1-1 1.5 1.5a1.4 1.4 0 0 0 2-2L13 11"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8 16v-3M12 16v-7M16 16v-5M20 16v-9"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.4 12h10.2l1.8-8H6.5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></symbol>
+  <symbol id="i-comment" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 3z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-hex" viewBox="0 0 24 24"><path d="M12 2.5l8 4.6v9.8l-8 4.6-8-4.6V7.1z"/><path d="M12 8l4 2.3v3.4L12 16l-4-2.3v-3.4z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
+</svg>
+
+<!-- ================= 封面 ================= -->
+<header class="cover" id="cover">
+  <div class="wrap">
+    <span class="badge">MetaCode 行业案例 · 电商</span>
+    <h1>护肤品电商 × TikTok<br><span class="hl">AI 短视频引流 & 达人返佣</span> 工作流</h1>
+    <p class="sub">以一款「神经酰胺屏障修复面霜」主攻欧美 TikTok 为例，完整演示<br>从选品洞察 → AI 批量出片 → 投放引流 → 达人建联 → 返佣结算 的全链路。</p>
+    <p class="meta">案例市场：美国 / 英国 TikTok Shop　·　主推品类：Ceramide Barrier Repair Cream　·　文档版本 v1.0</p>
+    <div class="cta">
+      <button class="btn btn-primary" onclick="openDoc()"><svg class="icn"><use href="#i-doc"/></svg> 点击查看完整案例文档</button>
+      <a class="btn btn-ghost" href="#kpi" onclick="openDoc()">直接看量化效果 ↓</a>
+    </div>
+  </div>
+  <div class="scroll-hint">点击上方按钮展开文档 ▾</div>
+</header>
+
+<!-- ================= 文档体 ================= -->
+<main class="doc" id="doc">
+<div class="wrap">
+
+  <!-- 1 业务背景 -->
+  <section id="bg">
+    <div class="kicker">Business Background</div>
+    <h2 class="sec"><span class="num">1</span>业务背景</h2>
+    <p class="lead">一家跨境护肤品 DTC 电商公司，核心诉求：<b>用优质短视频内容在 TikTok 引流获客，再借平台达人 + 返佣机制放大销量。</b></p>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card bgcard"><span class="ic"><svg class="icn"><use href="#i-bottle"/></svg></span><h4>主推产品</h4><p>神经酰胺屏障修复面霜，主打「敏感/干性肌、刷酸刷崩后的屏障修复」，高复购、高毛利。</p></div>
+      <div class="card bgcard"><span class="ic"><svg class="icn"><use href="#i-globe"/></svg></span><h4>目标市场</h4><p>美国 + 英国 TikTok Shop，成分党 / 科学护肤话语权强，监管严格（FDA / FTC / EU）。</p></div>
+      <div class="card bgcard"><span class="ic"><svg class="icn"><use href="#i-target"/></svg></span><h4>核心目标</h4><p>低成本批量产内容 → 自然流起量 → 达人建联放大 → 返佣驱动持续带货 → 销量提升。</p></div>
+      <div class="card bgcard"><span class="ic"><svg class="icn"><use href="#i-link"/></svg></span><h4>原有痛点</h4><p>出片慢且贵、达人海投回复率低、合规违规频繁下架、归因混乱难结算佣金。</p></div>
+    </div>
+  </section>
+
+  <!-- 2 AI 工作流程 -->
+  <section id="flow">
+    <div class="kicker">AI Workflow</div>
+    <h2 class="sec"><span class="num">2</span>AI 是怎么帮我们卖货的（全流程一图看懂）</h2>
+    <p class="lead">你可以把它想象成一条「自动生产线」：你只需要告诉它想卖什么，AI 就会一步步接力——<b>找准什么产品会火 → 写好视频脚本 → 自动做出视频 → 发到 TikTok 引流 → 找网红帮忙带货 → 卖出去自动算提成给网红</b>。整个过程不用你懂技术，关键决定（比如选哪个产品、合同怎么签）仍然由人来拍板。下面这张图就是完整流程。</p>
+    <div class="card" style="margin-top:18px">
+      <figure>
+        <svg viewBox="0 0 1000 300" role="img" aria-label="AI 工作流程图">
+          <defs>
+            <linearGradient id="gp" x1="0" x2="1"><stop offset="0" stop-color="#e07a8b"/><stop offset="1" stop-color="#d8a657"/></linearGradient>
+            <marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c0a"/></marker>
+          </defs>
+          <!-- pipeline boxes -->
+          <g font-family="inherit" text-anchor="middle">
+            <!-- helper repeated via JS-free static -->
+            <g>
+              <rect x="20"  y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
+              <circle cx="50" cy="88" r="15" fill="url(#gp)"/><text x="50" y="93" fill="#fff" font-size="15" font-weight="700">①</text>
+              <text x="98" y="92" font-size="14" font-weight="700">挑对产品</text>
+              <text x="87" y="120" font-size="11" fill="#7c726b">看什么会火</text>
+              <text x="87" y="135" font-size="11" fill="#7c726b">给产品打分</text>
+            </g>
+            <g>
+              <rect x="195" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
+              <circle cx="225" cy="88" r="15" fill="url(#gp)"/><text x="225" y="93" fill="#fff" font-size="15" font-weight="700">②</text>
+              <text x="273" y="92" font-size="14" font-weight="700">写脚本</text>
+              <text x="262" y="120" font-size="11" fill="#7c726b">想好怎么讲</text>
+              <text x="262" y="135" font-size="11" fill="#7c726b">多个版本</text>
+            </g>
+            <g>
+              <rect x="370" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
+              <circle cx="400" cy="88" r="15" fill="url(#gp)"/><text x="400" y="93" fill="#fff" font-size="15" font-weight="700">③</text>
+              <text x="448" y="92" font-size="14" font-weight="700">做视频</text>
+              <text x="437" y="120" font-size="11" fill="#7c726b">AI口播配音</text>
+              <text x="437" y="135" font-size="11" fill="#7c726b">自动剪+查违规</text>
+            </g>
+            <g>
+              <rect x="545" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
+              <circle cx="575" cy="88" r="15" fill="url(#gp)"/><text x="575" y="93" fill="#fff" font-size="15" font-weight="700">④</text>
+              <text x="623" y="92" font-size="14" font-weight="700">发布引流</text>
+              <text x="612" y="120" font-size="11" fill="#7c726b">挑好发布时间</text>
+              <text x="612" y="135" font-size="11" fill="#7c726b">火了就加投</text>
+            </g>
+            <g>
+              <rect x="720" y="60" width="135" height="86" rx="14" fill="#fff" stroke="#ece3da"/>
+              <circle cx="750" cy="88" r="15" fill="url(#gp)"/><text x="750" y="93" fill="#fff" font-size="15" font-weight="700">⑤</text>
+              <text x="798" y="92" font-size="14" font-weight="700">找网红带货</text>
+              <text x="787" y="120" font-size="11" fill="#7c726b">筛合适网红</text>
+              <text x="787" y="135" font-size="11" fill="#7c726b">自动发邀约</text>
+            </g>
+            <g>
+              <rect x="865" y="60" width="115" height="86" rx="14" fill="#2b9e94"/>
+              <text x="922" y="92" fill="#fff" font-size="14" font-weight="700">算提成</text>
+              <text x="922" y="118" fill="#dff3f1" font-size="11">认准谁带货</text>
+              <text x="922" y="133" fill="#dff3f1" font-size="11">自动结佣金</text>
+            </g>
+            <!-- arrows -->
+            <g stroke="#e3b8bf" stroke-width="2" fill="none">
+              <line x1="155" y1="103" x2="193" y2="103"/><line x1="330" y1="103" x2="368" y2="103"/>
+              <line x1="505" y1="103" x2="543" y2="103"/><line x1="680" y1="103" x2="718" y2="103"/>
+              <line x1="855" y1="103" x2="863" y2="103"/>
+            </g>
+            <!-- data loop -->
+            <path d="M922 146 L922 210 L80 210 L80 148" stroke="#2b9e94" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+            <rect x="360" y="195" width="280" height="30" rx="15" fill="#e6f5f3"/>
+            <text x="500" y="214" text-anchor="middle" font-size="12" fill="#1f7d75" font-weight="700">销售数据自动回流，系统越用越聪明</text>
+            <!-- human checkpoints -->
+            <use href="#i-lock" x="300" y="251" width="15" height="15" fill="none" stroke="#7c726b" stroke-width="1.8"/>
+            <text x="322" y="263" font-size="12" fill="#7c726b">这几步仍由人来定：选哪个产品 · 内容是否合规 · 和网红的合同与报价</text>
+          </g>
+        </svg>
+        <figcaption>图 2-1　从挑产品到算提成，AI 一步步接力，你只管做决定</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3 AI 工作架构 -->
+  <section id="arch">
+    <div class="kicker">AI Architecture</div>
+    <h2 class="sec"><span class="num">3</span>AI 工作架构</h2>
+    <p class="lead">三层架构：上层编排调度，中层 5 个智能体协作，底层数据与模型能力支撑。</p>
+    <div class="card" style="margin-top:18px">
+      <figure>
+        <svg viewBox="0 0 1000 430" role="img" aria-label="AI 工作架构图">
+          <defs><linearGradient id="ga" x1="0" x2="1"><stop offset="0" stop-color="#e07a8b"/><stop offset="1" stop-color="#d8a657"/></linearGradient></defs>
+          <!-- 编排层 -->
+          <rect x="30" y="20" width="940" height="70" rx="14" fill="#fbeef0" stroke="#f0d3d9"/>
+          <text x="50" y="48" font-size="13" font-weight="700" fill="#c75f72">编排调度层 · Orchestration</text>
+          <text x="50" y="70" font-size="12" fill="#7c726b">任务编排 · 触发规则 · 人工审批节点 · 异常兜底（n8n / Coze / Dify）</text>
+
+          <!-- Agent 层 -->
+          <text x="50" y="118" font-size="13" font-weight="700" fill="#c75f72">智能体协作层 · Agents</text>
+          <g text-anchor="middle" font-size="12">
+            <g><rect x="30"  y="130" width="178" height="92" rx="12" fill="#fff" stroke="#ece3da"/>
+               <text x="119" y="158" font-weight="700" font-size="13">① 趋势洞察 Agent</text>
+               <text x="119" y="180" fill="#7c726b">热点爬取 · 评论情感</text><text x="119" y="198" fill="#7c726b">SKU 潜力打分</text></g>
+            <g><rect x="221" y="130" width="178" height="92" rx="12" fill="#fff" stroke="#ece3da"/>
+               <text x="310" y="158" font-weight="700" font-size="13">② 创意脚本 Agent</text>
+               <text x="310" y="180" fill="#7c726b">钩子结构库 · 分镜</text><text x="310" y="198" fill="#7c726b">多版本生成</text></g>
+            <g><rect x="412" y="130" width="178" height="92" rx="12" fill="#fff" stroke="#ece3da"/>
+               <text x="501" y="158" font-weight="700" font-size="13">③ 内容生产 Agent</text>
+               <text x="501" y="180" fill="#7c726b">数字人 · AI 配音</text><text x="501" y="198" fill="#7c726b">自动剪辑 · 合规扫描</text></g>
+            <g><rect x="603" y="130" width="178" height="92" rx="12" fill="#fff" stroke="#ece3da"/>
+               <text x="692" y="158" font-weight="700" font-size="13">④ 投放优化 Agent</text>
+               <text x="692" y="180" fill="#7c726b">标签 · 时机预测</text><text x="692" y="198" fill="#7c726b">实时 ROI 调优</text></g>
+            <g><rect x="794" y="130" width="176" height="92" rx="12" fill="#fff" stroke="#ece3da"/>
+               <text x="882" y="158" font-weight="700" font-size="13">⑤ 达人 BD Agent</text>
+               <text x="882" y="180" fill="#7c726b">画像匹配 · 邀约</text><text x="882" y="198" fill="#7c726b">谈判 ROI 测算</text></g>
+          </g>
+
+          <!-- 能力/数据层 -->
+          <text x="50" y="258" font-size="13" font-weight="700" fill="#c75f72">模型与数据能力层 · Foundation</text>
+          <g text-anchor="middle" font-size="12">
+            <rect x="30"  y="270" width="220" height="60" rx="12" fill="#eef7f6" stroke="#cfe9e4"/>
+            <text x="140" y="296" font-weight="700">大语言模型 LLM</text><text x="140" y="316" fill="#1f7d75">文案 · 脚本 · 邀约 · 翻译</text>
+            <rect x="265" y="270" width="220" height="60" rx="12" fill="#eef7f6" stroke="#cfe9e4"/>
+            <text x="375" y="296" font-weight="700">生成式视觉 / 语音</text><text x="375" y="316" fill="#1f7d75">数字人 · TTS · 自动剪辑</text>
+            <rect x="500" y="270" width="220" height="60" rx="12" fill="#eef7f6" stroke="#cfe9e4"/>
+            <text x="610" y="296" font-weight="700">向量匹配 / 推荐</text><text x="610" y="316" fill="#1f7d75">达人画像 · 人群匹配</text>
+            <rect x="735" y="270" width="235" height="60" rx="12" fill="#eef7f6" stroke="#cfe9e4"/>
+            <text x="852" y="296" font-weight="700">合规规则引擎</text><text x="852" y="316" fill="#1f7d75">FDA / FTC / EU 词库</text>
+          </g>
+
+          <!-- 数据资产 -->
+          <rect x="30" y="350" width="940" height="58" rx="14" fill="#fff8ec" stroke="#f0e0bf"/>
+          <text x="50" y="376" font-size="13" font-weight="700" fill="#a8842f">数据资产沉淀 · Data Assets</text>
+          <text x="50" y="396" font-size="12" fill="#7c726b">爆款脚本结构库　·　达人效果评分卡　·　SKU–内容–转化对照表　→　反哺各 Agent 形成数据飞轮</text>
+        </svg>
+        <figcaption>图 3-1　AI 工作架构：编排层 → 5 智能体协作层 → 模型/数据能力层 → 数据资产飞轮</figcaption>
+      </figure>
+    </div>
+
+    <!-- MetaCode 产品能力展示 -->
+    <div class="card metacard" style="margin-top:18px">
+      <div class="mc-head">
+        <div>
+          <div class="mc-logo"><svg class="icn"><use href="#i-hex"/></svg> MetaCode</div>
+          <h4 style="margin:6px 0 4px;font-size:19px">上面这套 AI 架构，由 MetaCode 一站式落地</h4>
+          <p style="color:var(--muted);font-size:15px;max-width:640px">不用懂代码，用自然语言描述需求，MetaCode 就能帮你把「选品 → 出片 → 投放 → 达人 → 返佣」的整条 AI 工作流搭起来、跑起来、并持续优化。</p>
+        </div>
+        <a class="btn btn-primary mc-btn" href="https://yuduoduo503-coder.github.io/metacode-public-page-v64-20260513/#install" target="_blank" rel="noopener">了解 MetaCode 产品 <svg class="icn"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+      <div class="grid g3" style="margin-top:20px">
+        <div class="mc-item"><span class="mc-ic"><svg class="icn"><use href="#i-mic"/></svg></span><b>自然语言搭工作流</b><p>一句话描述业务，自动生成可执行的多智能体流程，无需写代码。</p></div>
+        <div class="mc-item"><span class="mc-ic"><svg class="icn"><use href="#i-film"/></svg></span><b>内容批量生产</b><p>数字人口播、AI 配音、自动剪辑、多语种字幕，分钟级批量出片。</p></div>
+        <div class="mc-item"><span class="mc-ic"><svg class="icn"><use href="#i-shield"/></svg></span><b>合规自动护栏</b><p>内置 FDA / FTC / EU 违禁词库，发布前自动扫描与改写，降低下架风险。</p></div>
+        <div class="mc-item"><span class="mc-ic"><svg class="icn"><use href="#i-handshake"/></svg></span><b>达人智能建联</b><p>画像匹配筛选达人、个性化邀约话术、返佣 ROI 测算一键完成。</p></div>
+        <div class="mc-item"><span class="mc-ic"><svg class="icn"><use href="#i-chart"/></svg></span><b>数据回流飞轮</b><p>销售与投放数据自动回流，沉淀爆款库与达人评分卡，越用越准。</p></div>
+        <div class="mc-item"><span class="mc-ic"><svg class="icn"><use href="#i-plug"/></svg></span><b>一键接入与编排</b><p>对接 TikTok、电商小店与各类模型能力，可视化编排、人工审批卡点。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 模拟视频/展示效果 -->
+  <section id="demo">
+    <div class="kicker">Content Demo</div>
+    <h2 class="sec"><span class="num">4</span>AI 生成的模拟视频 & 投放展示</h2>
+    <p class="lead">同一卖点，AI 在数分钟内批量产出多版本短视频（美/英口音、不同钩子结构），并自动埋入 TikTok Shop 引导与合规标注。</p>
+    <div class="card" style="margin-top:18px">
+      <div class="phones">
+        <!-- video A · 成分党科学测评 -->
+        <div class="phone"><div class="screen"><span class="notch"></span>
+          <span class="ad">Paid partnership · #ad</span>
+          <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="版本A画面：成分科学测评">
+            <defs>
+              <radialGradient id="aGlow" cx="50%" cy="56%" r="62%"><stop offset="0" stop-color="#ffd6e1"/><stop offset="46%" stop-color="#b56b80"/><stop offset="100%" stop-color="#4e2c39"/></radialGradient>
+              <linearGradient id="aJar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eaddd3"/></linearGradient>
+              <linearGradient id="aCap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7dca0"/><stop offset="1" stop-color="#d6a455"/></linearGradient>
+              <filter id="aSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#2a141c" flood-opacity=".5"/></filter>
+            </defs>
+            <rect width="236" height="460" fill="url(#aGlow)"/>
+            <!-- 柔光粒子 -->
+            <g fill="#fff" opacity=".14"><circle cx="36" cy="92" r="16"/><circle cx="205" cy="60" r="22"/><circle cx="26" cy="240" r="11"/><circle cx="214" cy="250" r="14"/></g>
+            <!-- 主题 chip -->
+            <rect x="34" y="42" width="168" height="28" rx="14" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.45)"/>
+            <text x="118" y="60" text-anchor="middle" fill="#fff" class="tag">成分解析 · Ceramide NP</text>
+            <!-- 神经酰胺分子结构（六元环+辉光节点） -->
+            <g opacity=".92">
+              <g stroke="#ffe3ec" stroke-width="1.5" fill="none">
+                <path d="M118 88 L97 100 L97 124 L118 136 L139 124 L139 100 Z"/>
+                <line x1="118" y1="88" x2="118" y2="76"/><line x1="139" y1="100" x2="155" y2="92"/><line x1="97" y1="124" x2="81" y2="132"/>
+              </g>
+              <g fill="#fff"><circle cx="118" cy="88" r="4.5"/><circle cx="97" cy="100" r="4"/><circle cx="139" cy="100" r="4"/><circle cx="97" cy="124" r="4"/><circle cx="139" cy="124" r="4"/></g>
+              <circle cx="118" cy="136" r="5.5" fill="#ffe08a"/>
+            </g>
+            <!-- hero 面霜瓶 -->
+            <ellipse cx="118" cy="288" rx="50" ry="9" fill="#2a141c" opacity=".45"/>
+            <g filter="url(#aSh)">
+              <rect x="85" y="186" width="66" height="96" rx="16" fill="url(#aJar)"/>
+              <rect x="97" y="174" width="42" height="16" rx="6" fill="url(#aCap)"/>
+              <rect x="91" y="206" width="54" height="40" rx="7" fill="#f3eae1"/>
+              <rect x="91" y="194" width="9" height="84" rx="4.5" fill="#fff" opacity=".6"/>
+            </g>
+            <text x="118" y="224" text-anchor="middle" fill="#9a6f55" class="tag">CERAMIDE</text>
+            <text x="118" y="237" text-anchor="middle" fill="#c0a18a" class="tag-s">BARRIER REPAIR</text>
+            <!-- 浮动成分标 -->
+            <g filter="url(#aSh)">
+              <rect x="150" y="246" width="76" height="22" rx="11" fill="#fff"/><text x="188" y="261" text-anchor="middle" fill="#a35069" class="tag-s">Ceramide 3%</text>
+              <rect x="10" y="208" width="70" height="22" rx="11" fill="#fff"/><text x="45" y="223" text-anchor="middle" fill="#a35069" class="tag-s">+ Squalane</text>
+            </g>
+          </svg>
+          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>48.2k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>1.3k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>2.1k</div></div>
+          <div class="overlay">
+            <div class="handle">@theglowlab</div>
+            <div class="cap">"I destroyed my skin barrier with too many actives — here's the one ingredient that actually helped."</div>
+            <div class="tags">#skinbarrier #ceramides #skincycling #fyp</div>
+            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> Linked in TikTok Shop</div>
+          </div>
+        </div><figcaption>版本 A · 成分党科学测评钩子</figcaption></div>
+
+        <!-- video B · Esthetician 教育种草 -->
+        <div class="phone"><div class="screen"><span class="notch"></span>
+          <span class="ad">Paid partnership · #ad</span>
+          <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="版本B画面：护肤师教学">
+            <defs>
+              <radialGradient id="bGlow" cx="50%" cy="30%" r="80%"><stop offset="0" stop-color="#dcf4ef"/><stop offset="52%" stop-color="#5fb1a7"/><stop offset="100%" stop-color="#185650"/></radialGradient>
+              <linearGradient id="bCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.26)"/><stop offset="1" stop-color="rgba(255,255,255,.08)"/></linearGradient>
+              <filter id="bSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0d3b37" flood-opacity=".45"/></filter>
+            </defs>
+            <rect width="236" height="460" fill="url(#bGlow)"/>
+            <!-- 星光点缀 -->
+            <g fill="#fff" opacity=".55"><circle cx="38" cy="58" r="2"/><circle cx="198" cy="46" r="2.4"/><circle cx="212" cy="150" r="1.8"/><circle cx="24" cy="168" r="1.8"/></g>
+            <!-- 护肤师头像 -->
+            <g filter="url(#bSh)">
+              <circle cx="108" cy="84" r="37" fill="#fff"/>
+              <circle cx="108" cy="84" r="33" fill="#ffe0cf"/>
+              <circle cx="108" cy="73" r="13" fill="#6b4a37"/>
+              <path d="M81 108 a27 23 0 0 1 54 0 Z" fill="#fff"/>
+            </g>
+            <!-- PRO 徽章 -->
+            <g filter="url(#bSh)"><rect x="138" y="96" width="48" height="22" rx="11" fill="#0e4f49"/><text x="162" y="111" text-anchor="middle" fill="#9fe6dc" class="tag-s">✦ ESTHETICIAN</text></g>
+            <text x="118" y="150" text-anchor="middle" fill="#fff" class="tag">Skin cycling · recovery night</text>
+            <!-- 玻璃拟态护理卡 -->
+            <g filter="url(#bSh)"><rect x="24" y="162" width="160" height="140" rx="16" fill="url(#bCard)" stroke="rgba(255,255,255,.35)"/></g>
+            <text x="38" y="186" fill="#eafaf8" class="tag-s">Night 1 · Exfoliate</text><line x1="36" y1="194" x2="172" y2="194" stroke="rgba(255,255,255,.22)"/>
+            <text x="38" y="210" fill="#eafaf8" class="tag-s">Night 2 · Retinoid</text><line x1="36" y1="218" x2="172" y2="218" stroke="rgba(255,255,255,.22)"/>
+            <rect x="32" y="224" width="144" height="28" rx="9" fill="#fff"/>
+            <text x="44" y="242" fill="#1f6f68" class="tag-s">Night 3 · Recovery</text>
+            <use href="#i-check" x="152" y="230" width="16" height="16" fill="none" stroke="#1f9e8f" stroke-width="2"/>
+            <rect x="32" y="258" width="144" height="28" rx="9" fill="#fff"/>
+            <text x="44" y="276" fill="#1f6f68" class="tag-s">Night 4 · Recovery</text>
+            <use href="#i-check" x="152" y="264" width="16" height="16" fill="none" stroke="#1f9e8f" stroke-width="2"/>
+            <!-- 产品瓶（恢复夜用） -->
+            <g filter="url(#bSh)">
+              <rect x="190" y="222" width="34" height="60" rx="10" fill="#fffdfb"/>
+              <rect x="197" y="214" width="20" height="10" rx="4" fill="#cfe6e2"/>
+              <rect x="195" y="230" width="6" height="46" rx="3" fill="#fff" opacity=".6"/>
+            </g>
+            <text x="207" y="256" text-anchor="middle" fill="#7fb0a9" class="tag-s">CERA</text>
+          </svg>
+          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>71.9k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>2.6k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>4.4k</div></div>
+          <div class="overlay">
+            <div class="handle">@esther.skincoach</div>
+            <div class="cap">"Skin cycling recovery night — the only cream that helped my barrier feel calm again."</div>
+            <div class="tags">#skincycling #dermatologist #sensitiveskin</div>
+            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> Shop now · 18% off code</div>
+          </div>
+        </div><figcaption>版本 B · Esthetician 教育种草钩子</figcaption></div>
+
+        <!-- video C · 素人 7 天 Before/After -->
+        <div class="phone"><div class="screen"><span class="notch"></span>
+          <span class="ad">Paid partnership · #ad</span>
+          <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="版本C画面：7天前后对比">
+            <defs>
+              <linearGradient id="cL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f6647"/><stop offset="1" stop-color="#c0966a"/></linearGradient>
+              <radialGradient id="cR" cx="58%" cy="38%" r="85%"><stop offset="0" stop-color="#fdeecd"/><stop offset="100%" stop-color="#e4bf83"/></radialGradient>
+              <radialGradient id="ckL" cx="50%" cy="38%" r="62%"><stop offset="0" stop-color="#ecb79a"/><stop offset="100%" stop-color="#c98c70"/></radialGradient>
+              <radialGradient id="ckR" cx="40%" cy="32%" r="68%"><stop offset="0" stop-color="#ffead2"/><stop offset="100%" stop-color="#efc79f"/></radialGradient>
+              <filter id="cSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#5a3b1f" flood-opacity=".45"/></filter>
+            </defs>
+            <!-- 左 Day1 / 右 Day7 斜切分割 -->
+            <polygon points="0,0 138,0 100,460 0,460" fill="url(#cL)"/>
+            <polygon points="138,0 236,0 236,460 100,460" fill="url(#cR)"/>
+            <line x1="138" y1="0" x2="100" y2="460" stroke="#fff" stroke-width="2.5" opacity=".92"/>
+            <!-- 对比滑块手柄 -->
+            <circle cx="119" cy="206" r="15" fill="#fff" filter="url(#cSh)"/>
+            <path d="M114 200 l-5 6 5 6 M124 200 l5 6 -5 6" stroke="#c0966a" stroke-width="1.7" fill="none"/>
+            <!-- 左脸颊：干燥泛红+脱屑 -->
+            <ellipse cx="58" cy="188" rx="40" ry="54" fill="url(#ckL)"/>
+            <g fill="#bb5749" opacity=".5"><circle cx="44" cy="166" r="2.8"/><circle cx="66" cy="178" r="3.2"/><circle cx="50" cy="200" r="2.4"/><circle cx="70" cy="210" r="2.8"/><circle cx="56" cy="224" r="2.6"/><circle cx="40" cy="196" r="2.2"/></g>
+            <g fill="#fff" opacity=".3"><path d="M48 188l5 2-3 3z"/><path d="M64 200l5 2-3 3z"/><path d="M52 214l4 2-3 3z"/></g>
+            <!-- 右脸颊：光滑水润+高光 -->
+            <ellipse cx="178" cy="188" rx="40" ry="54" fill="url(#ckR)"/>
+            <ellipse cx="166" cy="168" rx="13" ry="20" fill="#fff" opacity=".5"/>
+            <g fill="#fff" opacity=".75"><circle cx="200" cy="150" r="1.8"/><circle cx="190" cy="226" r="1.8"/><circle cx="210" cy="192" r="1.5"/></g>
+            <!-- 标签 chip -->
+            <rect x="20" y="84" width="64" height="26" rx="13" fill="rgba(0,0,0,.45)"/><text x="52" y="101" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
+            <rect x="152" y="84" width="64" height="26" rx="13" fill="#fff" filter="url(#cSh)"/><text x="184" y="101" text-anchor="middle" fill="#bf8a3f" class="tag">DAY 7</text>
+            <text x="52" y="262" text-anchor="middle" fill="#fff" class="tag-s">干燥 · 泛红 · 脱屑</text>
+            <text x="184" y="262" text-anchor="middle" fill="#8a5a26" class="tag-s">平滑 · 舒缓 · 水润</text>
+            <!-- 产品瓶 -->
+            <g filter="url(#cSh)">
+              <rect x="100" y="276" width="38" height="58" rx="11" fill="#fffdfb"/>
+              <rect x="108" y="268" width="22" height="10" rx="4" fill="#e7d3c4"/>
+              <rect x="105" y="286" width="6" height="42" rx="3" fill="#fff" opacity=".6"/>
+            </g>
+            <text x="119" y="308" text-anchor="middle" fill="#b08d6f" class="tag-s">7-DAY</text>
+          </svg>
+          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
+          <div class="overlay">
+            <div class="handle">@mia.everyday</div>
+            <div class="cap">"7 days of dry, flaky winter skin → finally calm & comfortable. No filter."</div>
+            <div class="tags">#beforeandafter #dryskin #glowup</div>
+            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> Tap to shop the cream</div>
+          </div>
+        </div><figcaption>版本 C · 素人 7 天 Before/After</figcaption></div>
+      </div>
+      <div class="note" style="margin-top:24px">
+        <b>③ 生产节点合规自动改写示例：</b>　<span class="no"><svg class="icn"><use href="#i-x"/></svg> "repairs your barrier in 3 days / cures eczema"</span>　→　<span class="ok"><svg class="icn"><use href="#i-check"/></svg> "helps your skin feel more resilient over time / for dry, sensitive-feeling skin"</span>　并强制叠加 <b>#ad</b> 标注，规避 FDA 药效宣称与 FTC 披露违规。
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 量化效果 -->
+  <section id="kpi">
+    <div class="kicker">Quantified Impact</div>
+    <h2 class="sec"><span class="num">5</span>AI 介入后的可量化效果</h2>
+    <p class="lead">以 8 周试点为周期，对比 AI 介入前后的核心指标（模拟数据，用于演示量化口径）。</p>
+
+    <!-- KPI cards -->
+    <div class="grid g4" style="margin:18px 0">
+      <div class="card kpi"><div class="big">98.5%↓</div><div class="lab">单条视频制作成本</div><div class="delta">¥820 → ¥12</div></div>
+      <div class="card kpi"><div class="big">15×</div><div class="lab">周内容产能</div><div class="delta">20 → 300 条/周</div></div>
+      <div class="card kpi"><div class="big">3.9×</div><div class="lab">达人建联回复率</div><div class="delta">8% → 31%</div></div>
+      <div class="card kpi"><div class="big">+218%</div><div class="lab">月度 GMV</div><div class="delta">↑ 2.18 倍</div></div>
+    </div>
+
+    <!-- bar chart 1: before/after -->
+    <div class="grid g2">
+      <div class="card">
+        <h4 style="margin-bottom:4px">效率类指标对比</h4>
+        <div class="legend"><span><i style="background:#ccbfb6"></i>AI 介入前</span><span><i style="background:#e07a8b"></i>AI 介入后</span></div>
+        <svg viewBox="0 0 460 300" aria-label="效率对比柱状图">
+          <g font-size="12" fill="#7c726b">
+            <!-- baseline -->
+            <line x1="60" y1="250" x2="450" y2="250" stroke="#ece3da"/>
+            <!-- groups: 3 metrics, normalized to 100 max -->
+            <!-- m1 出片周期(越低越好) before 100(3天) after 1(15min) -->
+            <text x="105" y="272" text-anchor="middle">出片周期</text>
+            <rect x="80"  y="40"  width="34" height="210" fill="#ccbfb6" rx="5"/><text x="97" y="32" text-anchor="middle" fill="#2a2320">3 天</text>
+            <rect x="120" y="240" width="34" height="10"  fill="#e07a8b" rx="5"/><text x="137" y="232" text-anchor="middle" fill="#2a2320">15 分</text>
+            <!-- m2 周产能 before 20 after 300 -> scale /3 -->
+            <text x="235" y="272" text-anchor="middle">周产能(条)</text>
+            <rect x="210" y="236" width="34" height="14"  fill="#ccbfb6" rx="5"/><text x="227" y="228" text-anchor="middle" fill="#2a2320">20</text>
+            <rect x="250" y="50"  width="34" height="200" fill="#e07a8b" rx="5"/><text x="267" y="42" text-anchor="middle" fill="#2a2320">300</text>
+            <!-- m3 达人触达 before 15 after 120 /day -->
+            <text x="365" y="272" text-anchor="middle">达人触达/人日</text>
+            <rect x="340" y="225" width="34" height="25"  fill="#ccbfb6" rx="5"/><text x="357" y="217" text-anchor="middle" fill="#2a2320">15</text>
+            <rect x="380" y="50"  width="34" height="200" fill="#e07a8b" rx="5"/><text x="397" y="42" text-anchor="middle" fill="#2a2320">120</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card">
+        <h4 style="margin-bottom:4px">转化类指标对比</h4>
+        <div class="legend"><span><i style="background:#ccbfb6"></i>AI 介入前</span><span><i style="background:#2b9e94"></i>AI 介入后</span></div>
+        <svg viewBox="0 0 460 300" aria-label="转化对比柱状图">
+          <g font-size="12" fill="#7c726b">
+            <line x1="60" y1="250" x2="450" y2="250" stroke="#ece3da"/>
+            <!-- CTR 1.2 -> 3.8 (scale x40) -->
+            <text x="105" y="272" text-anchor="middle">视频 CTR</text>
+            <rect x="80"  y="202" width="34" height="48"  fill="#ccbfb6" rx="5"/><text x="97" y="194" text-anchor="middle" fill="#2a2320">1.2%</text>
+            <rect x="120" y="98"  width="34" height="152" fill="#2b9e94" rx="5"/><text x="137" y="90" text-anchor="middle" fill="#2a2320">3.8%</text>
+            <!-- 加购转化 0.8 -> 2.5 (x60) -->
+            <text x="235" y="272" text-anchor="middle">下单转化</text>
+            <rect x="210" y="202" width="34" height="48"  fill="#ccbfb6" rx="5"/><text x="227" y="194" text-anchor="middle" fill="#2a2320">0.8%</text>
+            <rect x="250" y="100" width="34" height="150" fill="#2b9e94" rx="5"/><text x="267" y="92" text-anchor="middle" fill="#2a2320">2.5%</text>
+            <!-- ROAS 1.6 -> 4.3 (x40) -->
+            <text x="365" y="272" text-anchor="middle">投放 ROAS</text>
+            <rect x="340" y="186" width="34" height="64"  fill="#ccbfb6" rx="5"/><text x="357" y="178" text-anchor="middle" fill="#2a2320">1.6</text>
+            <rect x="380" y="78"  width="34" height="172" fill="#2b9e94" rx="5"/><text x="397" y="70" text-anchor="middle" fill="#2a2320">4.3</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- GMV trend line -->
+    <div class="card" style="margin-top:18px">
+      <h4 style="margin-bottom:10px">8 周试点 · 月度 GMV 增长曲线（达人 + 返佣放大后）</h4>
+      <svg viewBox="0 0 960 300" aria-label="GMV 增长曲线">
+        <g font-size="12" fill="#7c726b">
+          <!-- axes -->
+          <line x1="60" y1="20" x2="60" y2="250" stroke="#ece3da"/>
+          <line x1="60" y1="250" x2="930" y2="250" stroke="#ece3da"/>
+          <!-- y labels -->
+          <text x="48" y="250" text-anchor="end">0</text>
+          <text x="48" y="180" text-anchor="end">$50k</text>
+          <text x="48" y="110" text-anchor="end">$100k</text>
+          <text x="48" y="40"  text-anchor="end">$150k</text>
+          <!-- grid -->
+          <line x1="60" y1="180" x2="930" y2="180" stroke="#f3ece4"/>
+          <line x1="60" y1="110" x2="930" y2="110" stroke="#f3ece4"/>
+          <line x1="60" y1="40"  x2="930" y2="40"  stroke="#f3ece4"/>
+          <!-- data: week1..8 GMV(k): 14,18,26,40,58,82,108,142 -> y=250-(v*1.4) -->
+          <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e07a8b" stop-opacity=".35"/><stop offset="1" stop-color="#e07a8b" stop-opacity="0"/></linearGradient></defs>
+          <polygon points="60,230 184,225 308,214 432,194 556,169 680,135 804,99 928,51 928,250 60,250" fill="url(#area)"/>
+          <polyline points="60,230 184,225 308,214 432,194 556,169 680,135 804,99 928,51" fill="none" stroke="#e07a8b" stroke-width="3"/>
+          <g fill="#c75f72">
+            <circle cx="60" cy="230" r="4"/><circle cx="184" cy="225" r="4"/><circle cx="308" cy="214" r="4"/><circle cx="432" cy="194" r="4"/>
+            <circle cx="556" cy="169" r="4"/><circle cx="680" cy="135" r="4"/><circle cx="804" cy="99" r="4"/><circle cx="928" cy="51" r="5"/>
+          </g>
+          <!-- x labels -->
+          <g text-anchor="middle">
+            <text x="60" y="270">W1</text><text x="184" y="270">W2</text><text x="308" y="270">W3</text><text x="432" y="270">W4</text>
+            <text x="556" y="270">W5</text><text x="680" y="270">W6</text><text x="804" y="270">W7</text><text x="928" y="270">W8</text>
+          </g>
+          <!-- annotations -->
+          <line x1="432" y1="40" x2="432" y2="250" stroke="#2b9e94" stroke-dasharray="4 4"/>
+          <text x="440" y="56" fill="#1f7d75" font-weight="700">W4：达人建联 + 返佣机制上线</text>
+          <text x="800" y="86" fill="#c75f72" font-weight="700">$142k</text>
+        </g>
+      </svg>
+      <figcaption>图 5-1　第 4 周接入达人 + 返佣后，GMV 进入加速增长，8 周累计较起点增长约 +218%</figcaption>
+    </div>
+
+    <!-- full table -->
+    <h4 style="margin:26px 0 12px">完整指标对照表</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>环节</th><th>指标</th><th>AI 介入前</th><th>AI 介入后</th><th>变化</th></tr></thead>
+        <tbody>
+          <tr><td>内容生产</td><td>单条制作成本</td><td>¥820</td><td>¥12</td><td class="up">↓ 98.5%</td></tr>
+          <tr><td>内容生产</td><td>出片周期</td><td>2–3 天</td><td>≈ 15 分钟</td><td class="up">↓ 99%</td></tr>
+          <tr><td>内容生产</td><td>周产能</td><td>20 条</td><td>300 条</td><td class="up">↑ 15×</td></tr>
+          <tr><td>合规</td><td>违规/下架率</td><td>9.0%</td><td>0.6%</td><td class="up">↓ 93%</td></tr>
+          <tr><td>投放</td><td>视频 CTR</td><td>1.2%</td><td>3.8%</td><td class="up">↑ 217%</td></tr>
+          <tr><td>投放</td><td>投放 ROAS</td><td>1.6</td><td>4.3</td><td class="up">↑ 169%</td></tr>
+          <tr><td>达人建联</td><td>邀约回复率</td><td>8%</td><td>31%</td><td class="up">↑ 287%</td></tr>
+          <tr><td>达人建联</td><td>人均日触达</td><td>15 家</td><td>120 家</td><td class="up">↑ 7×</td></tr>
+          <tr><td>转化</td><td>下单转化率</td><td>0.8%</td><td>2.5%</td><td class="up">↑ 213%</td></tr>
+          <tr><td>销量</td><td>月度 GMV</td><td>$45k</td><td>$143k</td><td class="up">↑ 218%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="font-size:13px;margin-top:10px;color:#a99e96">* 上述为模拟演示数据，用于说明量化口径与对比方式，非真实经营结果。</p>
+  </section>
+
+  <!-- 6 端到端案例 + 返佣 -->
+  <section id="case">
+    <div class="kicker">Walk-through</div>
+    <h2 class="sec"><span class="num">6</span>端到端案例走查 & 返佣机制</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h4 style="margin-bottom:12px">🔁 一次完整链路（欧美 TK）</h4>
+        <p style="font-size:14.5px;color:#5d544d">
+          <span class="pill">① 选品</span>监测美区 #skinbarrier / #skincycling 高位，痛点「刷酸刷崩、换季干裂」，SKU 潜力分 90，定为主推。<br><br>
+          <span class="pill">② 脚本</span>生成 6 版英文脚本，最优钩子「I destroyed my skin barrier with too many actives…」，全部合规改写。<br><br>
+          <span class="pill">③ 生产</span>数字人英文口播 + 自动剪辑，1 小时出 6 条；合规扫描拦下「repairs in 3 days」违禁表述。<br><br>
+          <span class="pill">④ 投放</span>5 账号错峰发美区黄金时段，48h 内 2 条完播 >45% 起量，AI 自动加投 Promote。<br><br>
+          <span class="pill t">⑤ 建联</span>筛 25 个 Esthetician 垂类达人（匹配度 >0.8），18% CPS + 寄样，谈成 10 个合作。<br><br>
+          <span class="pill t">返佣</span>专属联盟链接归因，强制 #ad，1,200 单自动算佣，Top3 触发爆单奖金。
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="margin-bottom:12px">💰 返佣机制设计</h4>
+        <div class="tbl-wrap" style="border:none">
+          <table>
+            <thead><tr><th>机制</th><th>设置</th><th>作用</th></tr></thead>
+            <tbody>
+              <tr><td>基础 CPS</td><td>10–20%（新品 18%）</td><td>零风险、达人愿试</td></tr>
+              <tr><td>阶梯佣金</td><td>月销破阶 +1 档</td><td>激励持续推</td></tr>
+              <tr><td>专属链接/码</td><td>一人一码归因</td><td>精准结算防错</td></tr>
+              <tr><td>爆单奖金</td><td>月 GMV Top3 现金</td><td>制造竞争势能</td></tr>
+              <tr><td>二创激励</td><td>优质 UGC 额外奖</td><td>反哺内容池</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note" style="margin-top:14px"><b>AI 的角色：</b>不算账，而是按「达人 ROI × 毛利 × 库存周转」<b>动态优化佣金率</b>，并识别刷单/异常退货，结算交规则引擎与财务复核。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    护肤品电商 × TikTok AI 短视频引流 & 达人返佣工作流 · 案例文档 v1.0　|　数据为模拟演示用途<br>
+    <span style="font-size:12px"><svg class="icn"><use href="#i-hex"/></svg> 本案例模板由 MetaCode 生成</span>
+  </div>
+
+</div>
+</main>
+
+<div class="backtop" id="bt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+  function openDoc(){
+    var d=document.getElementById('doc');
+    if(!d.classList.contains('show')){d.classList.add('show');}
+    document.getElementById('cover').style.minHeight='auto';
+  }
+  window.addEventListener('scroll',function(){
+    document.getElementById('bt').style.display = window.scrollY>600?'flex':'none';
+  });
+</script>
+</body>
+</html>
