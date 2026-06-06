@@ -382,41 +382,70 @@
           <span class="ad">Paid partnership · #ad</span>
           <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="Version A: ingredient-science creator">
             <defs>
-              <radialGradient id="aGlow" cx="50%" cy="52%" r="64%"><stop offset="0" stop-color="#ffd6e1"/><stop offset="46%" stop-color="#b56b80"/><stop offset="100%" stop-color="#4e2c39"/></radialGradient>
-              <linearGradient id="aJar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eaddd3"/></linearGradient>
+              <radialGradient id="aGlow" cx="50%" cy="42%" r="78%"><stop offset="0" stop-color="#ffd9e3"/><stop offset="50%" stop-color="#bd6c82"/><stop offset="100%" stop-color="#43212d"/></radialGradient>
+              <radialGradient id="aSkin" cx="44%" cy="38%" r="72%"><stop offset="0" stop-color="#f9d8bd"/><stop offset="60%" stop-color="#edb892"/><stop offset="100%" stop-color="#d59a73"/></radialGradient>
+              <linearGradient id="aHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2a1e"/><stop offset="1" stop-color="#1b120c"/></linearGradient>
+              <linearGradient id="aLip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cf7074"/><stop offset="1" stop-color="#a3454f"/></linearGradient>
+              <linearGradient id="aJar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ecdfd4"/></linearGradient>
               <linearGradient id="aCap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7dca0"/><stop offset="1" stop-color="#d6a455"/></linearGradient>
               <filter id="aSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#2a141c" flood-opacity=".5"/></filter>
+              <filter id="aSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4"/></filter>
             </defs>
             <rect width="236" height="460" fill="url(#aGlow)"/>
-            <g fill="#fff" opacity=".12"><circle cx="28" cy="300" r="14"/><circle cx="212" cy="250" r="18"/><circle cx="206" cy="118" r="10"/></g>
-            <!-- 关键词（强调成分科学） -->
-            <text x="118" y="50" text-anchor="middle" fill="#ffd9e4" class="kw-s">INGREDIENT DEEP-DIVE</text>
-            <rect x="56" y="58" width="124" height="28" rx="14" fill="#ffe08a"/>
-            <text x="118" y="78" text-anchor="middle" fill="#6e3b2a" class="kw">CERAMIDE NP</text>
-            <!-- 人物：成分党博主 -->
-            <path d="M40 318 q52 -66 104 0 v50 h-104 z" fill="#8a5566"/>
-            <path d="M83 196 h22 v24 q-11 7 -22 0 z" fill="#e3b193"/>
-            <ellipse cx="94" cy="172" rx="33" ry="37" fill="#f0c3a4"/>
-            <circle cx="61" cy="174" r="5" fill="#f0c3a4"/><circle cx="127" cy="174" r="5" fill="#f0c3a4"/>
-            <path d="M59 170 q-3 -42 35 -44 q38 2 35 44 q-9 -23 -35 -24 q-26 1 -35 24z" fill="#3f2c20"/>
-            <path d="M59 170 q-5 30 5 50 l7 -6 q-10 -20 -5 -42z" fill="#3f2c20"/>
-            <circle cx="83" cy="172" r="2.6" fill="#3a2a22"/><circle cx="106" cy="172" r="2.6" fill="#3a2a22"/>
-            <path d="M76 162 q6 -4 12 0M100 162 q6 -4 12 0" stroke="#3f2c20" stroke-width="1.6" fill="none"/>
-            <path d="M86 186 q8 6 16 0" stroke="#bb7a5e" stroke-width="2" fill="none"/>
-            <!-- 手 -->
-            <ellipse cx="150" cy="250" rx="11" ry="9" fill="#f0c3a4"/>
-            <!-- 产品瓶 -->
-            <ellipse cx="170" cy="250" rx="33" ry="7" fill="#2a141c" opacity=".4"/>
+            <g fill="#fff" opacity=".10"><circle cx="26" cy="300" r="14"/><circle cx="214" cy="252" r="18"/><circle cx="208" cy="120" r="10"/></g>
+            <text x="118" y="40" text-anchor="middle" fill="#ffd9e4" class="kw-s">INGREDIENT DEEP-DIVE</text>
+            <!-- 后发 -->
+            <path d="M56 198 q-12 90 26 152 h112 q38 -62 26 -152 q-10 -82 -82 -82 q-72 0 -82 82z" fill="url(#aHair)"/>
+            <!-- 颈 -->
+            <path d="M104 240 h28 v34 q-14 11 -28 0z" fill="#d79b75"/>
+            <path d="M104 252 q14 9 28 0 v8 q-14 8 -28 0z" fill="#3a1f1a" opacity=".18"/>
+            <!-- 肩/衣 -->
+            <path d="M58 360 q12 -66 60 -70 q48 4 60 70 v6 h-120z" fill="#6f3a4a"/>
+            <!-- 脸 -->
+            <path d="M74 186 C74 150 90 138 118 138 C146 138 162 150 162 186 C162 214 148 241 118 253 C88 241 74 214 74 186Z" fill="url(#aSkin)"/>
+            <!-- 耳 -->
+            <ellipse cx="74" cy="192" rx="7" ry="11" fill="#e7b48f"/><ellipse cx="162" cy="192" rx="7" ry="11" fill="#e7b48f"/>
+            <!-- 腮红 -->
+            <g filter="url(#aSoft)" fill="#e8918f" opacity=".4"><ellipse cx="96" cy="210" rx="12" ry="8"/><ellipse cx="140" cy="210" rx="12" ry="8"/></g>
+            <!-- 鼻 -->
+            <path d="M118 190 q-5 13 -7 19 q3 5 13 1" fill="none" stroke="#cf9a76" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+            <!-- 眉 -->
+            <path d="M89 178 q13 -7 25 -2" stroke="#2c1d13" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M122 176 q12 -5 25 3" stroke="#2c1d13" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- 眼 -->
+            <ellipse cx="102" cy="190" rx="8" ry="5" fill="#fff"/><ellipse cx="134" cy="190" rx="8" ry="5" fill="#fff"/>
+            <circle cx="103" cy="190" r="3.6" fill="#5b3b27"/><circle cx="135" cy="190" r="3.6" fill="#5b3b27"/>
+            <circle cx="103" cy="190" r="1.7" fill="#1a120c"/><circle cx="135" cy="190" r="1.7" fill="#1a120c"/>
+            <circle cx="101.4" cy="188.6" r="1" fill="#fff"/><circle cx="133.4" cy="188.6" r="1" fill="#fff"/>
+            <path d="M94 187 q8 -5 17 0" stroke="#2c1d13" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M125 187 q9 -5 17 0" stroke="#2c1d13" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <!-- 唇 -->
+            <path d="M103 223 q15 5 30 0 q-7 12 -15 12 q-8 0 -15 -12z" fill="url(#aLip)"/>
+            <path d="M106 226 q12 4 24 0" stroke="#ec9a98" stroke-width="1.2" fill="none" opacity=".7"/>
+            <!-- 前刘海 -->
+            <path d="M73 188 q-7 -56 45 -58 q52 2 45 58 q-13 -32 -45 -32 q-32 0 -45 32z" fill="url(#aHair)"/>
+            <path d="M73 188 q-3 -22 9 -36 q-3 24 1 42z" fill="url(#aHair)"/>
+            <path d="M163 188 q3 -22 -9 -36 q3 24 -1 42z" fill="url(#aHair)"/>
+            <g stroke="#6a4a35" stroke-width="1" opacity=".45" fill="none"><path d="M86 150 q24 -16 60 0"/><path d="M83 162 q31 -14 67 0"/></g>
+            <!-- 产品瓶（手持） -->
+            <ellipse cx="172" cy="316" rx="30" ry="7" fill="#2a141c" opacity=".4"/>
             <g filter="url(#aSh)">
-              <rect x="141" y="162" width="58" height="86" rx="15" fill="url(#aJar)"/>
-              <rect x="152" y="151" width="36" height="15" rx="6" fill="url(#aCap)"/>
-              <rect x="146" y="180" width="48" height="32" rx="6" fill="#f3eae1"/>
-              <rect x="146" y="170" width="8" height="74" rx="4" fill="#fff" opacity=".6"/>
+              <rect x="148" y="232" width="54" height="84" rx="15" fill="url(#aJar)"/>
+              <rect x="158" y="221" width="34" height="15" rx="6" fill="url(#aCap)"/>
+              <rect x="153" y="250" width="44" height="34" rx="6" fill="#f3eae1"/>
+              <rect x="152" y="240" width="7" height="72" rx="3.5" fill="#fff" opacity=".55"/>
             </g>
-            <text x="170" y="199" text-anchor="middle" fill="#9a6f55" class="tag-s">CERAMIDE</text>
-            <text x="170" y="209" text-anchor="middle" fill="#c0a18a" class="tag-s">BARRIER CREAM</text>
+            <text x="175" y="266" text-anchor="middle" fill="#9a6f55" class="tag-s">CERAMIDE NP</text>
+            <text x="175" y="277" text-anchor="middle" fill="#c0a18a" class="tag-s">BARRIER CREAM</text>
+            <path d="M150 313 q24 12 46 0 v9 q-23 12 -46 0z" fill="#edb892"/>
+            <!-- 关键词条 -->
+            <rect x="50" y="52" width="136" height="26" rx="13" fill="#ffe08a"/>
+            <text x="118" y="69" text-anchor="middle" fill="#6e3b2a" class="kw" style="font-size:14px">CERAMIDE NP</text>
             <!-- 成分浮标 -->
-            <g filter="url(#aSh)"><rect x="150" y="258" width="78" height="20" rx="10" fill="#fff"/><text x="189" y="272" text-anchor="middle" fill="#a35069" class="tag-s">Ceramide 3% + Squalane</text></g>
+            <g filter="url(#aSh)"><rect x="12" y="250" width="104" height="22" rx="11" fill="#fff"/></g>
+            <text x="64" y="265" text-anchor="middle" fill="#a35069" class="tag-s">Ceramide 3% + Squalane</text>
+            <g filter="url(#aSh)"><rect x="22" y="280" width="84" height="20" rx="10" fill="rgba(255,255,255,.92)"/></g>
+            <text x="64" y="294" text-anchor="middle" fill="#7a3f50" class="tag-s">pH 5.5 · Fragrance-free</text>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>48.2k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>1.3k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>2.1k</div></div>
           <div class="overlay">
@@ -432,40 +461,65 @@
           <span class="ad">Paid partnership · #ad</span>
           <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="Version B: esthetician educator">
             <defs>
-              <radialGradient id="bGlow" cx="50%" cy="34%" r="82%"><stop offset="0" stop-color="#dcf4ef"/><stop offset="52%" stop-color="#5fb1a7"/><stop offset="100%" stop-color="#185650"/></radialGradient>
+              <radialGradient id="bGlow" cx="50%" cy="30%" r="86%"><stop offset="0" stop-color="#dff5f0"/><stop offset="52%" stop-color="#54a89e"/><stop offset="100%" stop-color="#11433e"/></radialGradient>
+              <radialGradient id="bSkin" cx="44%" cy="38%" r="72%"><stop offset="0" stop-color="#fadcc2"/><stop offset="60%" stop-color="#f0bf9a"/><stop offset="100%" stop-color="#dba07a"/></radialGradient>
+              <linearGradient id="bHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a4233"/><stop offset="1" stop-color="#2f2016"/></linearGradient>
+              <linearGradient id="bLip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c87a72"/><stop offset="1" stop-color="#9e4f4a"/></linearGradient>
+              <linearGradient id="bBtl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dbeeea"/></linearGradient>
               <filter id="bSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0d3b37" flood-opacity=".45"/></filter>
+              <filter id="bSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4"/></filter>
             </defs>
             <rect width="236" height="460" fill="url(#bGlow)"/>
-            <g fill="#fff" opacity=".55"><circle cx="34" cy="62" r="2"/><circle cx="200" cy="52" r="2.4"/><circle cx="214" cy="150" r="1.8"/><circle cx="22" cy="150" r="1.8"/></g>
-            <!-- 关键词（强调护理法） -->
-            <text x="118" y="48" text-anchor="middle" fill="#d6f5f0" class="kw-s">DERM-APPROVED ROUTINE</text>
-            <rect x="44" y="56" width="148" height="28" rx="14" fill="#fff"/>
-            <text x="118" y="76" text-anchor="middle" fill="#147068" class="kw">SKIN CYCLING</text>
-            <!-- 人物：护肤师（白大褂领+听诊感徽章） -->
-            <path d="M44 322 q64 -70 128 0 v46 h-128 z" fill="#ffffff"/>
-            <path d="M88 250 l20 26 20 -26 v-22 h-40 z" fill="#e6f4f1"/>
-            <path d="M96 226 h24 v26 q-12 8 -24 0 z" fill="#e8b89c"/>
-            <ellipse cx="108" cy="198" rx="36" ry="40" fill="#f4c8a8"/>
-            <circle cx="72" cy="200" r="5" fill="#f4c8a8"/><circle cx="144" cy="200" r="5" fill="#f4c8a8"/>
-            <path d="M70 196 q-2 -46 38 -48 q40 2 38 48 q-9 -25 -38 -26 q-29 1 -38 26z" fill="#5a4233"/>
-            <path d="M70 196 q-6 22 2 40 l8 -6 q-8 -16 -2 -34z" fill="#5a4233"/>
-            <path d="M146 196 q6 22 -2 40 l-8 -6 q8 -16 2 -34z" fill="#5a4233"/>
-            <circle cx="96" cy="198" r="2.8" fill="#3a2a22"/><circle cx="120" cy="198" r="2.8" fill="#3a2a22"/>
-            <path d="M88 188 q7 -4 14 0M114 188 q7 -4 14 0" stroke="#5a4233" stroke-width="1.7" fill="none"/>
-            <path d="M99 214 q9 7 18 0" stroke="#c07f63" stroke-width="2.2" fill="none"/>
-            <!-- ESTHETICIAN 徽章 -->
-            <g filter="url(#bSh)"><rect x="138" y="234" width="40" height="20" rx="10" fill="#0e4f49"/><text x="158" y="248" text-anchor="middle" fill="#9fe6dc" class="tag-s">PRO</text></g>
-            <!-- 产品瓶 -->
+            <g fill="#fff" opacity=".55"><circle cx="34" cy="64" r="2"/><circle cx="198" cy="54" r="2.4"/><circle cx="214" cy="150" r="1.8"/><circle cx="22" cy="150" r="1.8"/></g>
+            <!-- 月相（夜间护理） -->
+            <path d="M200 138 a12 12 0 1 0 0 24 a9 9 0 1 1 0 -24z" fill="#eaf7f3" opacity=".9"/>
+            <text x="112" y="44" text-anchor="middle" fill="#d6f5f0" class="kw-s">DERM-APPROVED ROUTINE</text>
+            <!-- 低发髻（后） -->
+            <ellipse cx="118" cy="118" rx="26" ry="16" fill="url(#bHair)"/>
+            <path d="M70 196 q-8 -78 48 -80 q56 2 48 80 q-6 18 -18 24 q10 -40 -30 -64 q-40 24 -30 64 q-12 -6 -18 -24z" fill="url(#bHair)"/>
+            <!-- 颈 -->
+            <path d="M104 244 h28 v34 q-14 11 -28 0z" fill="#dba07a"/>
+            <path d="M104 256 q14 9 28 0 v8 q-14 8 -28 0z" fill="#2f1f17" opacity=".18"/>
+            <!-- 白大褂 + V领 -->
+            <path d="M52 366 q14 -64 66 -68 q52 4 66 68 v4 h-132z" fill="#ffffff"/>
+            <path d="M100 304 L118 352 L136 304 L128 300 L118 326 L108 300z" fill="#eaf4f1"/>
+            <line x1="118" y1="304" x2="118" y2="356" stroke="#cfe6e2" stroke-width="2"/>
+            <!-- 脸 -->
+            <path d="M76 190 C76 154 92 142 118 142 C144 142 160 154 160 190 C160 218 146 244 118 256 C90 244 76 218 76 190Z" fill="url(#bSkin)"/>
+            <ellipse cx="76" cy="196" rx="7" ry="11" fill="#f0bf9a"/><ellipse cx="160" cy="196" rx="7" ry="11" fill="#f0bf9a"/>
+            <g filter="url(#bSoft)" fill="#e79a8c" opacity=".34"><ellipse cx="97" cy="214" rx="11" ry="7"/><ellipse cx="139" cy="214" rx="11" ry="7"/></g>
+            <path d="M118 194 q-5 13 -7 19 q3 5 13 1" fill="none" stroke="#cf9a76" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+            <path d="M91 182 q13 -7 25 -2" stroke="#3a281c" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M124 180 q12 -5 25 3" stroke="#3a281c" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <ellipse cx="104" cy="194" rx="8" ry="5" fill="#fff"/><ellipse cx="136" cy="194" rx="8" ry="5" fill="#fff"/>
+            <circle cx="105" cy="194" r="3.6" fill="#4a6b63"/><circle cx="137" cy="194" r="3.6" fill="#4a6b63"/>
+            <circle cx="105" cy="194" r="1.7" fill="#16100c"/><circle cx="137" cy="194" r="1.7" fill="#16100c"/>
+            <circle cx="103.5" cy="192.6" r="1" fill="#fff"/><circle cx="135.5" cy="192.6" r="1" fill="#fff"/>
+            <path d="M96 191 q8 -5 17 0" stroke="#3a281c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M127 191 q9 -5 17 0" stroke="#3a281c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M105 227 q13 5 26 0 q-6 11 -13 11 q-7 0 -13 -11z" fill="url(#bLip)"/>
+            <path d="M108 230 q10 4 20 0" stroke="#e6a097" stroke-width="1.2" fill="none" opacity=".7"/>
+            <!-- 中分发际 -->
+            <path d="M76 192 q-6 -52 42 -54 q48 2 42 54 q-12 -26 -22 -30 l-20 0 q-30 4 -42 30z" fill="url(#bHair)"/>
+            <!-- PRO 徽章 -->
+            <g filter="url(#bSh)"><rect x="138" y="250" width="44" height="20" rx="10" fill="#0e4f49"/></g>
+            <text x="160" y="264" text-anchor="middle" fill="#9fe6dc" class="tag-s">PRO · LE</text>
+            <!-- 产品（滴管瓶，左） -->
             <g filter="url(#bSh)">
-              <rect x="44" y="232" width="40" height="58" rx="11" fill="#fffdfb"/>
-              <rect x="52" y="224" width="24" height="10" rx="4" fill="#cfe6e2"/>
-              <rect x="49" y="244" width="6" height="42" rx="3" fill="#fff" opacity=".6"/>
+              <rect x="44" y="240" width="40" height="62" rx="11" fill="url(#bBtl)"/>
+              <rect x="58" y="222" width="12" height="20" rx="3" fill="#0e4f49"/>
+              <rect x="52" y="218" width="24" height="8" rx="4" fill="#cfe6e2"/>
+              <rect x="49" y="250" width="6" height="44" rx="3" fill="#fff" opacity=".6"/>
             </g>
-            <text x="64" y="262" text-anchor="middle" fill="#5a9991" class="tag-s">CERAMIDE</text>
-            <!-- recovery 关键词条 -->
-            <g filter="url(#bSh)"><rect x="58" y="300" width="120" height="24" rx="12" fill="#0e4f49"/></g>
-            <use href="#i-check" x="66" y="304" width="16" height="16" fill="none" stroke="#7fe6d8" stroke-width="2"/>
-            <text x="128" y="316" text-anchor="middle" fill="#d6f5f0" class="kw-s">RECOVERY NIGHT</text>
+            <text x="64" y="270" text-anchor="middle" fill="#5a9991" class="tag-s">CERAMIDE</text>
+            <text x="64" y="282" text-anchor="middle" fill="#8fb8b1" class="tag-s">NIGHT SERUM</text>
+            <!-- SKIN CYCLING 关键词条 -->
+            <rect x="46" y="56" width="132" height="26" rx="13" fill="#fff"/>
+            <text x="112" y="73" text-anchor="middle" fill="#147068" class="kw" style="font-size:14px">SKIN CYCLING</text>
+            <!-- RECOVERY NIGHT 横幅 -->
+            <g filter="url(#bSh)"><rect x="50" y="314" width="136" height="26" rx="13" fill="#0e4f49"/></g>
+            <use href="#i-check" x="60" y="319" width="16" height="16" fill="none" stroke="#7fe6d8" stroke-width="2"/>
+            <text x="126" y="331" text-anchor="middle" fill="#d6f5f0" class="kw-s">RECOVERY NIGHT</text>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>71.9k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>2.6k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>4.4k</div></div>
           <div class="overlay">
@@ -481,53 +535,65 @@
           <span class="ad">Paid partnership · #ad</span>
           <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="Version C: real-user 7-day before and after">
             <defs>
-              <linearGradient id="cL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f6647"/><stop offset="1" stop-color="#c0966a"/></linearGradient>
-              <radialGradient id="cR" cx="58%" cy="38%" r="85%"><stop offset="0" stop-color="#fdeecd"/><stop offset="100%" stop-color="#e4bf83"/></radialGradient>
-              <radialGradient id="ckR" cx="40%" cy="32%" r="70%"><stop offset="0" stop-color="#ffe9d2"/><stop offset="100%" stop-color="#eec79f"/></radialGradient>
+              <linearGradient id="cL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f6647"/><stop offset="1" stop-color="#b98e62"/></linearGradient>
+              <radialGradient id="cR" cx="58%" cy="36%" r="86%"><stop offset="0" stop-color="#fdeecd"/><stop offset="100%" stop-color="#e4bf83"/></radialGradient>
+              <radialGradient id="cSkinR" cx="42%" cy="34%" r="74%"><stop offset="0" stop-color="#ffe7ce"/><stop offset="100%" stop-color="#edc59c"/></radialGradient>
+              <linearGradient id="cHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a3f2b"/><stop offset="1" stop-color="#33230f"/></linearGradient>
+              <linearGradient id="cLip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9756f"/><stop offset="1" stop-color="#9c4a48"/></linearGradient>
               <filter id="cSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#5a3b1f" flood-opacity=".45"/></filter>
-              <clipPath id="faceC"><ellipse cx="118" cy="192" rx="46" ry="54"/></clipPath>
+              <clipPath id="faceC"><path d="M72 188 C72 152 88 140 118 140 C148 140 164 152 164 188 C164 216 150 244 118 256 C86 244 72 216 72 188Z"/></clipPath>
             </defs>
-            <!-- 背景斜切 Day1 / Day7 -->
             <polygon points="0,0 138,0 100,460 0,460" fill="url(#cL)"/>
             <polygon points="138,0 236,0 236,460 100,460" fill="url(#cR)"/>
-            <!-- 关键词（强调真实效果） -->
-            <text x="118" y="46" text-anchor="middle" fill="#fff" class="kw-s" style="opacity:.9">REAL RESULTS · NO FILTER</text>
-            <rect x="50" y="54" width="136" height="28" rx="14" fill="#fff" filter="url(#cSh)"/>
-            <text x="118" y="74" text-anchor="middle" fill="#bf8a3f" class="kw">7-DAY GLOW UP</text>
-            <!-- 人物：同一张脸，左半 Day1 / 右半 Day7 -->
+            <text x="118" y="44" text-anchor="middle" fill="#fff" class="kw-s" style="opacity:.92">REAL RESULTS · NO FILTER</text>
+            <rect x="50" y="52" width="136" height="26" rx="13" fill="#fff" filter="url(#cSh)"/>
+            <text x="118" y="69" text-anchor="middle" fill="#bf8a3f" class="kw" style="font-size:14px">7-DAY GLOW UP</text>
+            <!-- 后发 -->
+            <path d="M58 196 q-10 92 26 150 h68 q36 -58 26 -150 q-8 -82 -60 -82 q-52 0 -60 82z" fill="url(#cHair)"/>
+            <!-- 颈 -->
+            <path d="M104 244 h28 v30 q-14 11 -28 0z" fill="#e8c39c"/>
+            <!-- 脸（左半干燥/右半水润，clip） -->
             <g clip-path="url(#faceC)">
-              <rect x="60" y="135" width="58" height="120" fill="#d29a7e"/>
-              <rect x="118" y="135" width="60" height="120" fill="url(#ckR)"/>
-              <!-- 左半：干燥泛红脱屑 -->
-              <g fill="#b85546" opacity=".45"><circle cx="86" cy="172" r="3"/><circle cx="100" cy="184" r="2.6"/><circle cx="82" cy="198" r="2.8"/><circle cx="98" cy="210" r="2.4"/><circle cx="90" cy="224" r="2.6"/><circle cx="78" cy="186" r="2.2"/></g>
-              <g fill="#fff" opacity=".28"><path d="M84 190l5 2-3 3z"/><path d="M96 204l5 2-3 3z"/><path d="M86 216l4 2-3 3z"/></g>
-              <!-- 右半：水润高光 -->
-              <ellipse cx="140" cy="176" rx="13" ry="20" fill="#fff" opacity=".5"/>
-              <g fill="#fff" opacity=".7"><circle cx="156" cy="206" r="1.6"/><circle cx="150" cy="228" r="1.4"/></g>
+              <rect x="60" y="138" width="58" height="124" fill="#d29a7e"/>
+              <rect x="118" y="138" width="62" height="124" fill="url(#cSkinR)"/>
+              <g fill="#b85546" opacity=".4"><circle cx="86" cy="178" r="3"/><circle cx="100" cy="190" r="2.6"/><circle cx="82" cy="204" r="2.8"/><circle cx="98" cy="216" r="2.4"/><circle cx="90" cy="230" r="2.6"/><circle cx="78" cy="192" r="2.2"/></g>
+              <g fill="#fff" opacity=".3"><path d="M84 196l5 2-3 3z"/><path d="M96 210l5 2-3 3z"/><path d="M86 222l4 2-3 3z"/></g>
+              <ellipse cx="142" cy="182" rx="13" ry="22" fill="#fff" opacity=".45"/>
+              <g fill="#fff" opacity=".7"><circle cx="156" cy="210" r="1.6"/><circle cx="150" cy="232" r="1.4"/></g>
             </g>
-            <!-- 头发 -->
-            <path d="M72 178 q-4 -52 46 -54 q50 2 46 54 q-12 -30 -46 -31 q-34 1 -46 31z" fill="#4a3324"/>
-            <path d="M72 178 q-7 26 3 48 l9 -7 q-9 -18 -3 -41z" fill="#4a3324"/>
-            <path d="M164 178 q7 26 -3 48 l-9 -7 q9 -18 3 -41z" fill="#4a3324"/>
-            <!-- 眼睛/眉/微笑 -->
-            <circle cx="104" cy="190" r="2.8" fill="#3a2a22"/><circle cx="132" cy="190" r="2.8" fill="#3a2a22"/>
-            <path d="M95 180 q8 -4 16 0M125 180 q8 -4 16 0" stroke="#4a3324" stroke-width="1.7" fill="none"/>
-            <path d="M107 208 q11 8 22 0" stroke="#bb7a5e" stroke-width="2.2" fill="none"/>
-            <!-- 中线分割 -->
-            <line x1="118" y1="140" x2="118" y2="244" stroke="#fff" stroke-width="2" opacity=".85"/>
+            <!-- 耳 -->
+            <ellipse cx="72" cy="194" rx="6" ry="10" fill="#d29a7e"/><ellipse cx="164" cy="194" rx="6" ry="10" fill="#edc59c"/>
+            <!-- 前发（中分） -->
+            <path d="M72 190 q-6 -52 46 -54 q52 2 46 54 q-12 -30 -46 -31 q-34 1 -46 31z" fill="url(#cHair)"/>
+            <path d="M72 190 q-7 26 3 48 l9 -7 q-9 -18 -3 -41z" fill="url(#cHair)"/>
+            <path d="M164 190 q7 26 -3 48 l-9 -7 q9 -18 3 -41z" fill="url(#cHair)"/>
+            <!-- 眉 -->
+            <path d="M90 182 q13 -6 25 -1" stroke="#3a2a16" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M123 181 q12 -4 25 3" stroke="#3a2a16" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <!-- 眼 -->
+            <ellipse cx="104" cy="194" rx="7.5" ry="4.6" fill="#fff"/><ellipse cx="134" cy="194" rx="7.5" ry="4.6" fill="#fff"/>
+            <circle cx="105" cy="194" r="3.3" fill="#5a3b22"/><circle cx="135" cy="194" r="3.3" fill="#5a3b22"/>
+            <circle cx="105" cy="194" r="1.6" fill="#180f08"/><circle cx="135" cy="194" r="1.6" fill="#180f08"/>
+            <circle cx="103.6" cy="192.7" r=".9" fill="#fff"/><circle cx="133.6" cy="192.7" r=".9" fill="#fff"/>
+            <!-- 唇 -->
+            <path d="M105 226 q13 5 26 0 q-6 11 -13 11 q-7 0 -13 -11z" fill="url(#cLip)"/>
+            <!-- 中线 -->
+            <line x1="118" y1="142" x2="118" y2="256" stroke="#fff" stroke-width="2" opacity=".8"/>
             <!-- DAY 标签 -->
-            <rect x="16" y="100" width="60" height="24" rx="12" fill="rgba(0,0,0,.5)"/><text x="46" y="116" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
-            <rect x="160" y="100" width="60" height="24" rx="12" fill="#fff" filter="url(#cSh)"/><text x="190" y="116" text-anchor="middle" fill="#bf8a3f" class="tag">DAY 7</text>
+            <rect x="14" y="100" width="58" height="24" rx="12" fill="rgba(0,0,0,.5)"/><text x="43" y="116" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
+            <rect x="164" y="100" width="58" height="24" rx="12" fill="#fff" filter="url(#cSh)"/><text x="193" y="116" text-anchor="middle" fill="#bf8a3f" class="tag">DAY 7</text>
             <!-- 肤质描述 -->
-            <text x="46" y="262" text-anchor="middle" fill="#fff" class="tag-s">Dry · red · flaky</text>
-            <text x="190" y="262" text-anchor="middle" fill="#7a5320" class="tag-s">Calm · smooth · dewy</text>
-            <!-- 产品瓶（手持） -->
+            <text x="44" y="278" text-anchor="middle" fill="#fff" class="tag-s">Dry · red · flaky</text>
+            <text x="192" y="278" text-anchor="middle" fill="#7a5320" class="tag-s">Calm · smooth · dewy</text>
+            <!-- 产品（手持） -->
             <g filter="url(#cSh)">
-              <rect x="99" y="252" width="38" height="44" rx="10" fill="#fffdfb"/>
-              <rect x="107" y="245" width="22" height="9" rx="4" fill="#e7d3c4"/>
-              <rect x="104" y="260" width="6" height="30" rx="3" fill="#fff" opacity=".6"/>
+              <rect x="98" y="300" width="40" height="46" rx="10" fill="#fffdfb"/>
+              <rect x="106" y="292" width="24" height="9" rx="4" fill="#e7d3c4"/>
+              <rect x="103" y="308" width="6" height="32" rx="3" fill="#fff" opacity=".6"/>
             </g>
-            <text x="118" y="272" text-anchor="middle" fill="#b08d6f" class="tag-s">CERAMIDE</text>
+            <text x="118" y="320" text-anchor="middle" fill="#b08d6f" class="tag-s">CERAMIDE</text>
+            <text x="118" y="331" text-anchor="middle" fill="#cbb39c" class="tag-s">CREAM</text>
+            <path d="M96 344 q22 11 44 0 v8 q-22 11 -44 0z" fill="#e8c39c"/>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
           <div class="overlay">
