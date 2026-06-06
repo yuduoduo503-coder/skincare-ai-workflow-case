@@ -1,0 +1,4 @@
+render/
+assets/*.jpg
+!assets/A6.jpg
+!assets/B1.jpg
