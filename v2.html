@@ -95,23 +95,23 @@
   /* 顶部 #ad 标 */
   .ad{position:absolute;top:13px;left:11px;z-index:5;background:rgba(0,0,0,.5);font-size:10px;padding:3px 8px;border-radius:6px;letter-spacing:.03em}
   /* 右侧互动栏 */
-  .ui-right{position:absolute;right:9px;bottom:128px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center;font-size:11px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .ui-right{position:absolute;right:9px;bottom:128px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center;font-size:10.5px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
   .ui-right .ico{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:3px}
   /* 底部信息区：纵向正常流，互不重叠 */
   .overlay{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:34px 12px 12px;
     background:linear-gradient(transparent,rgba(0,0,0,.18) 22%,rgba(0,0,0,.72))}
-  .overlay .handle{font-size:12px;font-weight:700;margin-bottom:5px}
-  .overlay .cap{font-size:12.5px;font-weight:600;line-height:1.45;margin-bottom:7px;
+  .overlay .handle{font-size:11.5px;font-weight:700;margin-bottom:5px}
+  .overlay .cap{font-size:11.5px;font-weight:600;line-height:1.4;margin-bottom:7px;
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-  .overlay .tags{font-size:11px;color:#9ad8ff;margin-bottom:10px;line-height:1.4}
-  .overlay .shopbtn{display:block;background:rgba(255,255,255,.96);color:#15151b;font-size:11.5px;font-weight:700;text-align:center;padding:9px;border-radius:9px}
+  .overlay .tags{font-size:10.5px;color:#9ad8ff;margin-bottom:10px;line-height:1.4}
+  .overlay .shopbtn{display:block;background:rgba(255,255,255,.96);color:#15151b;font-size:11px;font-weight:700;text-align:center;padding:8px;border-radius:9px}
   /* 场景内文字标签 */
-  .scene .tag{font:700 10.5px/1.2 inherit}
-  .scene .tag-s{font:600 8.5px/1.2 inherit}
-  .scene .kw{font:800 15px/1 inherit;letter-spacing:.3px}
-  .scene .kw-s{font:700 9.5px/1 inherit;letter-spacing:1.4px}
-  .scene .hook{font:800 12.5px/1 inherit;letter-spacing:.1px}
-  .scene .cred{font:700 7.8px/1 inherit;letter-spacing:.2px}
+  .scene .tag{font:700 10px/1.2 inherit}
+  .scene .tag-s{font:600 8px/1.2 inherit}
+  .scene .kw{font:800 14px/1 inherit;letter-spacing:.3px}
+  .scene .kw-s{font:700 9px/1 inherit;letter-spacing:1.4px}
+  .scene .hook{font:800 11.5px/1 inherit;letter-spacing:0}
+  .scene .cred{font:700 7px/1 inherit;letter-spacing:.15px}
 
   .foot{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 10px;border-top:1px solid var(--line);margin-top:40px}
   .backtop{position:fixed;right:22px;bottom:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
@@ -398,9 +398,9 @@
             <rect x="15" y="37.5" width="9" height="6" fill="#3c3b6e"/>
             <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">USA</text>
             <!-- 背书 -->
-            <g filter="url(#aSh)"><rect x="120" y="40" width="100" height="18" rx="9" fill="#fff" fill-opacity=".95"/></g>
-            <use href="#i-flask" x="124" y="41.5" width="15" height="15" fill="none" stroke="#a35069" stroke-width="1.7"/>
-            <text x="215" y="52.6" text-anchor="end" fill="#a35069" class="cred">DERM-TESTED</text>
+            <g filter="url(#aSh)"><rect x="96" y="40" width="124" height="18" rx="9" fill="#fff" fill-opacity=".95"/></g>
+            <use href="#i-flask" x="100" y="42" width="13" height="13" fill="none" stroke="#a35069" stroke-width="1.7"/>
+            <text x="214" y="52.4" text-anchor="end" fill="#a35069" class="cred">DERM-TESTED</text>
             <!-- 钩子大字 -->
             <rect x="55" y="60" width="125" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">I WRECKED MY</text>
             <rect x="55" y="88" width="125" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">SKIN BARRIER</text>
@@ -436,9 +436,9 @@
               <path d="M25 37.5 V48.5 M15 43 H35" stroke="#c8102e" stroke-width="2"/></g>
             <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">UK</text>
             <!-- 背书 -->
-            <g filter="url(#bSh)"><rect x="116" y="40" width="104" height="18" rx="9" fill="#fff" fill-opacity=".95"/></g>
-            <use href="#i-check" x="120" y="41.5" width="15" height="15" fill="none" stroke="#147068" stroke-width="1.7"/>
-            <text x="215" y="52.6" text-anchor="end" fill="#147068" class="cred">LICENSED PRO</text>
+            <g filter="url(#bSh)"><rect x="92" y="40" width="128" height="18" rx="9" fill="#fff" fill-opacity=".95"/></g>
+            <use href="#i-check" x="96" y="42" width="13" height="13" fill="none" stroke="#147068" stroke-width="1.7"/>
+            <text x="214" y="52.4" text-anchor="end" fill="#147068" class="cred">LICENSED PRO</text>
             <!-- 钩子大字 -->
             <rect x="38" y="60" width="160" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">MY ESTHETICIAN&#39;S</text>
             <rect x="43" y="88" width="151" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">SKIN CYCLING PM</text>
@@ -490,9 +490,9 @@
             <g fill="#b22234"><rect x="15" y="37.5" width="20" height="1.55"/><rect x="15" y="40.6" width="20" height="1.55"/><rect x="15" y="43.7" width="20" height="1.55"/><rect x="15" y="46.8" width="20" height="1.55"/></g>
             <rect x="15" y="37.5" width="9" height="6" fill="#3c3b6e"/>
             <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">USA</text>
-            <!-- 背书：五星 + REAL CUSTOMER -->
-            <g fill="#ffcf57" stroke="none"><use href="#i-star" x="146" y="40" width="12" height="12"/><use href="#i-star" x="158" y="40" width="12" height="12"/><use href="#i-star" x="170" y="40" width="12" height="12"/><use href="#i-star" x="182" y="40" width="12" height="12"/><use href="#i-star" x="194" y="40" width="12" height="12"/></g>
-            <text x="216" y="63" text-anchor="end" fill="#fff" class="cred" style="opacity:.95">REAL CUSTOMER</text>
+            <!-- 背书：五星 + REAL CUSTOMER（同一行，避让钩子大字） -->
+            <g fill="#ffcf57" stroke="none"><use href="#i-star" x="118" y="42" width="8" height="8"/><use href="#i-star" x="126" y="42" width="8" height="8"/><use href="#i-star" x="134" y="42" width="8" height="8"/><use href="#i-star" x="142" y="42" width="8" height="8"/><use href="#i-star" x="150" y="42" width="8" height="8"/></g>
+            <text x="162" y="49.5" text-anchor="start" fill="#fff" class="cred" style="font-size:6.8px;opacity:.95">REAL CUSTOMER</text>
             <!-- 钩子大字 -->
             <rect x="47" y="60" width="142" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">I TRIED IT FOR</text>
             <rect x="30" y="88" width="177" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">7 DAYS · NO FILTER</text>
