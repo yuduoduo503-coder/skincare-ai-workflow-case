@@ -106,12 +106,12 @@
   .overlay .tags{font-size:11px;color:#9ad8ff;margin-bottom:10px;line-height:1.4}
   .overlay .shopbtn{display:block;background:rgba(255,255,255,.96);color:#15151b;font-size:11.5px;font-weight:700;text-align:center;padding:9px;border-radius:9px}
   /* 场景内文字标签 */
-  .scene .tag{font:700 11px/1.2 inherit}
-  .scene .tag-s{font:600 9px/1.2 inherit}
-  .scene .kw{font:800 16px/1 inherit;letter-spacing:.4px}
-  .scene .kw-s{font:700 10px/1 inherit;letter-spacing:1.6px}
-  .scene .hook{font:800 14px/1 inherit;letter-spacing:.2px}
-  .scene .cred{font:700 8.5px/1 inherit;letter-spacing:.5px}
+  .scene .tag{font:700 10.5px/1.2 inherit}
+  .scene .tag-s{font:600 8.5px/1.2 inherit}
+  .scene .kw{font:800 15px/1 inherit;letter-spacing:.3px}
+  .scene .kw-s{font:700 9.5px/1 inherit;letter-spacing:1.4px}
+  .scene .hook{font:800 12.5px/1 inherit;letter-spacing:.1px}
+  .scene .cred{font:700 7.8px/1 inherit;letter-spacing:.2px}
 
   .foot{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 10px;border-top:1px solid var(--line);margin-top:40px}
   .backtop{position:fixed;right:22px;bottom:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
@@ -461,74 +461,51 @@
           <span class="ad">Paid partnership · #ad</span>
           <svg class="scene" viewBox="0 0 236 460" preserveAspectRatio="xMidYMid slice" aria-label="Version C: real-user 7-day before and after">
             <defs>
-              <linearGradient id="cL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f6647"/><stop offset="1" stop-color="#b98e62"/></linearGradient>
-              <radialGradient id="cR" cx="58%" cy="36%" r="86%"><stop offset="0" stop-color="#fdeecd"/><stop offset="100%" stop-color="#e4bf83"/></radialGradient>
-              <radialGradient id="cSkinR" cx="42%" cy="34%" r="74%"><stop offset="0" stop-color="#ffe7ce"/><stop offset="100%" stop-color="#edc59c"/></radialGradient>
-              <linearGradient id="cHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcb45e"/><stop offset="1" stop-color="#a07d2c"/></linearGradient>
-              <linearGradient id="cLip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9756f"/><stop offset="1" stop-color="#9c4a48"/></linearGradient>
-              <filter id="cSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#5a3b1f" flood-opacity=".45"/></filter>
-              <clipPath id="faceC"><path d="M72 188 C72 152 88 140 118 140 C148 140 164 152 164 188 C164 216 150 244 118 256 C86 244 72 216 72 188Z"/></clipPath>
+              <filter id="cSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity=".5"/></filter>
+              <linearGradient id="cTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+              <clipPath id="cLhalf"><rect x="0" y="0" width="118" height="300"/></clipPath>
+              <filter id="cSmooth" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.2"/></filter>
             </defs>
-            <polygon points="0,0 138,0 100,460 0,460" fill="url(#cL)"/>
-            <polygon points="138,0 236,0 236,460 100,460" fill="url(#cR)"/>
-            <path d="M58 196 q-10 92 26 150 h68 q36 -58 26 -150 q-8 -82 -60 -82 q-52 0 -60 82z" fill="url(#cHair)"/>
-            <path d="M104 244 h28 v30 q-14 11 -28 0z" fill="#e8c39c"/>
-            <g clip-path="url(#faceC)">
-              <rect x="60" y="138" width="58" height="124" fill="#d29a7e"/>
-              <rect x="118" y="138" width="62" height="124" fill="url(#cSkinR)"/>
-              <g fill="#b85546" opacity=".4"><circle cx="86" cy="178" r="3"/><circle cx="100" cy="190" r="2.6"/><circle cx="82" cy="204" r="2.8"/><circle cx="98" cy="216" r="2.4"/><circle cx="90" cy="230" r="2.6"/><circle cx="78" cy="192" r="2.2"/></g>
-              <g fill="#fff" opacity=".3"><path d="M84 196l5 2-3 3z"/><path d="M96 210l5 2-3 3z"/><path d="M86 222l4 2-3 3z"/></g>
-              <ellipse cx="142" cy="182" rx="13" ry="22" fill="#fff" opacity=".45"/>
-              <g fill="#fff" opacity=".7"><circle cx="156" cy="210" r="1.6"/><circle cx="150" cy="232" r="1.4"/></g>
-            </g>
-            <ellipse cx="72" cy="194" rx="6" ry="10" fill="#d29a7e"/><ellipse cx="164" cy="194" rx="6" ry="10" fill="#edc59c"/>
-            <path d="M72 190 q-6 -52 46 -54 q52 2 46 54 q-12 -30 -46 -31 q-34 1 -46 31z" fill="url(#cHair)"/>
-            <path d="M72 190 q-7 26 3 48 l9 -7 q-9 -18 -3 -41z" fill="url(#cHair)"/>
-            <path d="M164 190 q7 26 -3 48 l-9 -7 q9 -18 3 -41z" fill="url(#cHair)"/>
-            <path d="M90 182 q13 -6 25 -1" stroke="#3a2a16" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-            <path d="M123 181 q12 -4 25 3" stroke="#3a2a16" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-            <ellipse cx="104" cy="194" rx="7.5" ry="4.6" fill="#fff"/><ellipse cx="134" cy="194" rx="7.5" ry="4.6" fill="#fff"/>
-            <circle cx="105" cy="194" r="3.3" fill="#6b86a0"/><circle cx="135" cy="194" r="3.3" fill="#6b86a0"/>
-            <circle cx="105" cy="194" r="1.6" fill="#180f08"/><circle cx="135" cy="194" r="1.6" fill="#180f08"/>
-            <circle cx="103.6" cy="192.7" r=".9" fill="#fff"/><circle cx="133.6" cy="192.7" r=".9" fill="#fff"/>
-            <path d="M105 226 q13 5 26 0 q-6 11 -13 11 q-7 0 -13 -11z" fill="url(#cLip)"/>
-            <line x1="118" y1="142" x2="118" y2="256" stroke="#fff" stroke-width="2" opacity=".8"/>
-            <!-- DAY 标签 + 肤质 -->
-            <rect x="14" y="120" width="56" height="22" rx="11" fill="#000" fill-opacity=".5"/><text x="42" y="135" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
-            <rect x="166" y="120" width="56" height="22" rx="11" fill="#fff" filter="url(#cSh)"/><text x="194" y="135" text-anchor="middle" fill="#bf8a3f" class="tag">DAY 7</text>
-            <text x="44" y="278" text-anchor="middle" fill="#fff" class="tag-s">Dry · red · flaky</text>
-            <text x="192" y="278" text-anchor="middle" fill="#7a5320" class="tag-s">Calm · smooth · dewy</text>
-            <!-- 产品（手持） -->
-            <g filter="url(#cSh)">
-              <rect x="98" y="300" width="40" height="46" rx="10" fill="#fffdfb"/>
-              <rect x="106" y="292" width="24" height="9" rx="4" fill="#e7d3c4"/>
-              <rect x="103" y="308" width="6" height="32" rx="3" fill="#fff" opacity=".6"/>
-            </g>
-            <text x="118" y="322" text-anchor="middle" fill="#b08d6f" class="tag-s">CERAMIDE</text>
-            <path d="M96 344 q22 11 44 0 v8 q-22 11 -44 0z" fill="#e8c39c"/>
-            <!-- ===== 爆款封面图层 ===== -->
-            <!-- 圈出 Day1 问题区 + 箭头指向 Day7 -->
-            <ellipse cx="88" cy="200" rx="19" ry="24" fill="none" stroke="#ff6a5a" stroke-width="2.6" transform="rotate(-7 88 200)"/>
-            <path d="M150 168 q1 -8 9 -10" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-            <path d="M159 158 l-6 1 M159 158 l1 6" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-            <!-- 钩子大字 -->
-            <rect x="45" y="56" width="146" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/>
-            <text x="118" y="74" text-anchor="middle" fill="#fff" class="hook">I TRIED IT FOR</text>
-            <rect x="28" y="84" width="180" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/>
-            <text x="118" y="102" text-anchor="middle" fill="#fff" class="hook">7 DAYS · NO FILTER</text>
-            <!-- 高亮关键词 -->
-            <g filter="url(#cSh)"><rect x="53" y="286" width="130" height="26" rx="8" fill="#fff"/></g>
-            <text x="118" y="304" text-anchor="middle" fill="#bf8a3f" class="hook">REAL RESULTS</text>
-            <!-- 评分背书：五星 -->
-            <g fill="#ffcf57" stroke="none"><use href="#i-star" x="146" y="40" width="12" height="12"/><use href="#i-star" x="158" y="40" width="12" height="12"/><use href="#i-star" x="170" y="40" width="12" height="12"/><use href="#i-star" x="182" y="40" width="12" height="12"/><use href="#i-star" x="194" y="40" width="12" height="12"/></g>
-            <text x="216" y="63" text-anchor="end" fill="#fff" class="cred" style="opacity:.95">REAL CUSTOMER</text>
-            <!-- 国籍：美国 🇺🇸 -->
+            <image href="assets/C2.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice"/>
+            <!-- ===== Before/After 真人素材分屏 ===== -->
+            <!-- DAY7（after）=左：高斯柔化+水润 -->
+            <g clip-path="url(#cLhalf)"><image href="assets/C2.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice" filter="url(#cSmooth)"/></g>
+            <rect x="0" y="0" width="118" height="300" fill="#ffe7c2" opacity=".15"/>
+            <g fill="#fff" opacity=".13"><ellipse cx="92" cy="216" rx="14" ry="20"/></g>
+            <g fill="#fff" opacity=".16"><ellipse cx="82" cy="232" rx="12" ry="19" transform="rotate(-24 82 232)"/></g>
+            <!-- DAY1（before）=右：暗沉+干纹+加深法令纹(F1->G4) -->
+            <rect x="118" y="0" width="118" height="300" fill="#6a6675" opacity=".3"/>
+            <rect x="118" y="0" width="118" height="300" fill="#8a7458" opacity=".16"/>
+            <path d="M142.5 175.5 Q149 199 157.5 220.5" stroke="#43363c" stroke-width="5" fill="none" opacity=".34"/>
+            <path d="M142.5 175.5 Q149 199 157.5 220.5" stroke="#5c4750" stroke-width="1.6" fill="none" opacity=".66"/>
+            <path d="M146.5 178 Q152.5 200 160.5 222" stroke="#796571" stroke-width="1" fill="none" opacity=".5"/>
+            <g stroke="#766b70" stroke-width=".8" fill="none" opacity=".5"><path d="M150 233 q5 2 9 0"/><path d="M148 243 q6 2 10 -1"/><path d="M154 251 q5 2 9 0"/><path d="M150 225 q5 2 9 0"/></g>
+            <g fill="#cdbfae" opacity=".32"><circle cx="154" cy="237" r=".8"/><circle cx="158" cy="247" r=".8"/><circle cx="150" cy="231" r=".7"/></g>
+            <g fill="#b05a4e" opacity=".15"><circle cx="158" cy="243" r="3"/></g>
+            <!-- 顶部压暗 -->
+            <rect x="0" y="0" width="236" height="132" fill="url(#cTop)"/>
+            <!-- 国籍：美国 -->
             <g filter="url(#cSh)"><rect x="11" y="35" width="50" height="16" rx="4" fill="#fff"/></g>
             <rect x="15" y="37.5" width="20" height="11" fill="#fff"/>
             <g fill="#b22234"><rect x="15" y="37.5" width="20" height="1.55"/><rect x="15" y="40.6" width="20" height="1.55"/><rect x="15" y="43.7" width="20" height="1.55"/><rect x="15" y="46.8" width="20" height="1.55"/></g>
             <rect x="15" y="37.5" width="9" height="6" fill="#3c3b6e"/>
-            <g fill="#fff"><circle cx="17" cy="39" r=".5"/><circle cx="20" cy="39" r=".5"/><circle cx="23" cy="39" r=".5"/><circle cx="18.5" cy="41" r=".5"/><circle cx="21.5" cy="41" r=".5"/><circle cx="17" cy="42.6" r=".5"/><circle cx="20" cy="42.6" r=".5"/><circle cx="23" cy="42.6" r=".5"/></g>
             <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">USA</text>
+            <!-- 背书：五星 + REAL CUSTOMER -->
+            <g fill="#ffcf57" stroke="none"><use href="#i-star" x="146" y="40" width="12" height="12"/><use href="#i-star" x="158" y="40" width="12" height="12"/><use href="#i-star" x="170" y="40" width="12" height="12"/><use href="#i-star" x="182" y="40" width="12" height="12"/><use href="#i-star" x="194" y="40" width="12" height="12"/></g>
+            <text x="216" y="63" text-anchor="end" fill="#fff" class="cred" style="opacity:.95">REAL CUSTOMER</text>
+            <!-- 钩子大字 -->
+            <rect x="47" y="60" width="142" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">I TRIED IT FOR</text>
+            <rect x="30" y="88" width="177" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">7 DAYS · NO FILTER</text>
+            <!-- 分屏：分割线 + DAY 标签 + 肤质 + 法令纹红圈 -->
+            <line x1="118" y1="118" x2="118" y2="300" stroke="#fff" stroke-width="2" opacity=".7"/>
+            <rect x="14" y="118" width="56" height="22" rx="11" fill="#fff" filter="url(#cSh)"/><text x="42" y="133" text-anchor="middle" fill="#bf8a3f" class="tag">DAY 7</text>
+            <rect x="166" y="118" width="56" height="22" rx="11" fill="#000" fill-opacity=".5"/><text x="194" y="133" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
+            <text x="58" y="246" text-anchor="middle" fill="#7a5320" class="tag-s">Plump · dewy</text>
+            <text x="178" y="246" text-anchor="middle" fill="#eee" class="tag-s">Dry · fine lines</text>
+            <ellipse cx="150" cy="198" rx="12" ry="27" fill="none" stroke="#ff5a4a" stroke-width="2.6" transform="rotate(-18 150 198)"/>
+            <!-- 高亮关键词 -->
+            <g filter="url(#cSh)"><rect x="58" y="262" width="120" height="26" rx="8" fill="#fff"/></g>
+            <text x="118" y="280" text-anchor="middle" fill="#bf8a3f" class="hook">REAL RESULTS</text>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
           <div class="overlay">
