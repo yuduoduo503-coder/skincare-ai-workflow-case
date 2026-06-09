@@ -112,6 +112,10 @@
   .scene .kw-s{font:700 9px/1 inherit;letter-spacing:1.4px}
   .scene .hook{font:800 11.5px/1 inherit;letter-spacing:0}
   .scene .cred{font:700 7px/1 inherit;letter-spacing:.15px}
+  /* 视频首帧编辑感排版：细体小字 + 衬线大字 */
+  .scene .fsm{font:600 10px/1.2 inherit;letter-spacing:.3px}
+  .scene .flg{font-family:Georgia,"Times New Roman",serif;font-weight:800;font-size:22px;line-height:.98;letter-spacing:.3px}
+  .scene .fday{font:800 9.5px/1 inherit;letter-spacing:1.2px}
 
   .foot{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 10px;border-top:1px solid var(--line);margin-top:40px}
   .backtop{position:fixed;right:22px;bottom:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
@@ -177,6 +181,10 @@
   <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></symbol>
   <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.2 8.3A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.7L14 9V3M7.5 14h9"/></symbol>
+  <!-- 视频首帧用：文字柔影 / 高调提亮 / 钩子区柔渐变（全文档可 url() 引用） -->
+  <filter id="txShadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity=".62"/></filter>
+  <filter id="hiKey"><feComponentTransfer><feFuncR type="linear" slope="1.12" intercept="0.035"/><feFuncG type="linear" slope="1.12" intercept="0.035"/><feFuncB type="linear" slope="1.12" intercept="0.04"/></feComponentTransfer><feColorMatrix type="saturate" values="1.06"/></filter>
+  <linearGradient id="hookGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".55" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient>
 </svg>
 
 <!-- ================= 封面 ================= -->
@@ -388,27 +396,15 @@
               <filter id="aSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity=".5"/></filter>
               <linearGradient id="aTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
             </defs>
-            <image href="assets/A6.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice"/>
-            <rect x="0" y="0" width="236" height="132" fill="url(#aTop)"/>
-            <!-- 国籍：美国 🇺🇸 -->
-            <g filter="url(#aSh)"><rect x="11" y="35" width="50" height="16" rx="4" fill="#fff"/></g>
-            <rect x="15" y="37.5" width="20" height="11" fill="#fff"/>
-            <g fill="#b22234"><rect x="15" y="37.5" width="20" height="1.55"/><rect x="15" y="40.6" width="20" height="1.55"/><rect x="15" y="43.7" width="20" height="1.55"/><rect x="15" y="46.8" width="20" height="1.55"/></g>
-            <rect x="15" y="37.5" width="9" height="6" fill="#3c3b6e"/>
-            <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">USA</text>
-            <!-- 背书 -->
-            <g filter="url(#aSh)"><rect x="96" y="40" width="124" height="18" rx="9" fill="#fff" fill-opacity=".95"/></g>
-            <use href="#i-flask" x="98" y="42" width="13" height="13" fill="none" stroke="#a35069" stroke-width="1.7"/>
-            <text x="214" y="52.2" text-anchor="end" fill="#a35069" class="cred" style="font-size:6px">DERM-TESTED</text>
-            <!-- 钩子大字 -->
-            <rect x="55" y="60" width="125" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">I WRECKED MY</text>
-            <rect x="55" y="88" width="125" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">SKIN BARRIER</text>
-            <!-- 高亮关键词 -->
-            <g filter="url(#aSh)"><rect x="62" y="252" width="112" height="26" rx="8" fill="#ffe08a"/></g><text x="118" y="270" text-anchor="middle" fill="#6e3b2a" class="hook">CERAMIDE NP</text>
+            <image href="assets/A6.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice" filter="url(#hiKey)"/>
+            <!-- 顶部留白；钩子放下三分之一，编辑感排版（细体小字 + 衬线大字），仅柔渐变+描影，无黑底块 -->
+            <rect x="0" y="156" width="236" height="144" fill="url(#hookGrad)"/>
+            <text x="14" y="240" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">i wrecked my barrier</text>
+            <text x="14" y="270" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">CERAMIDE NP</text>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>48.2k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>1.3k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>2.1k</div></div>
           <div class="overlay">
-            <div class="handle">@theglowlab</div>
+            <div class="handle">@theglowlab 🇺🇸</div>
             <div class="sponsor">Paid partnership · #ad</div>
             <div class="cap">"I destroyed my skin barrier with too many actives — here's the one ingredient that actually helped."</div>
             <div class="tags">#skinbarrier #ceramides #skincycling #fyp</div>
@@ -424,31 +420,14 @@
               <linearGradient id="bTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
               <clipPath id="ukclip"><rect x="15" y="37.5" width="20" height="11" rx="1"/></clipPath>
             </defs>
-            <image href="assets/B1.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice"/>
-            <rect x="0" y="0" width="236" height="132" fill="url(#bTop)"/>
-            <!-- 国籍：英国 🇬🇧 -->
-            <g filter="url(#bSh)"><rect x="11" y="35" width="50" height="16" rx="4" fill="#fff"/></g>
-            <g clip-path="url(#ukclip)"><rect x="15" y="37.5" width="20" height="11" fill="#012169"/>
-              <path d="M15 37.5 L35 48.5 M35 37.5 L15 48.5" stroke="#fff" stroke-width="3"/>
-              <path d="M15 37.5 L35 48.5 M35 37.5 L15 48.5" stroke="#c8102e" stroke-width="1.3"/>
-              <path d="M25 37.5 V48.5 M15 43 H35" stroke="#fff" stroke-width="4"/>
-              <path d="M25 37.5 V48.5 M15 43 H35" stroke="#c8102e" stroke-width="2"/></g>
-            <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">UK</text>
-            <!-- 背书 -->
-            <g filter="url(#bSh)"><rect x="92" y="40" width="128" height="18" rx="9" fill="#fff" fill-opacity=".95"/></g>
-            <use href="#i-check" x="94" y="42" width="13" height="13" fill="none" stroke="#147068" stroke-width="1.7"/>
-            <text x="214" y="52.2" text-anchor="end" fill="#147068" class="cred" style="font-size:6px">LICENSED PRO</text>
-            <!-- 钩子大字 -->
-            <rect x="38" y="60" width="160" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">MY ESTHETICIAN&#39;S</text>
-            <rect x="43" y="88" width="151" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">SKIN CYCLING PM</text>
-            <!-- 高亮关键词（夜间） -->
-            <g filter="url(#bSh)"><rect x="44" y="252" width="148" height="26" rx="8" fill="#0e4f49"/></g>
-            <path d="M60 259 a6 6 0 1 0 0 12 a4.5 4.5 0 1 1 0 -12z" fill="#d6f5f0"/>
-            <text x="126" y="270" text-anchor="middle" fill="#d6f5f0" class="hook">RECOVERY NIGHT</text>
+            <image href="assets/B1.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice" filter="url(#hiKey)"/>
+            <rect x="0" y="156" width="236" height="144" fill="url(#hookGrad)"/>
+            <text x="14" y="240" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">my esthetician's secret</text>
+            <text x="14" y="270" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">SKIN CYCLING</text>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>71.9k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>2.6k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>4.4k</div></div>
           <div class="overlay">
-            <div class="handle">@esther.skincoach</div>
+            <div class="handle">@esther.skincoach 🇬🇧</div>
             <div class="sponsor">Paid partnership · #ad</div>
             <div class="cap">"Skin cycling recovery night — the only cream that helped my barrier feel calm again."</div>
             <div class="tags">#skincycling #dermatologist #sensitiveskin</div>
@@ -463,9 +442,9 @@
               <filter id="cSh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity=".5"/></filter>
               <linearGradient id="cTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
               <clipPath id="cLhalf"><rect x="0" y="0" width="118" height="300"/></clipPath>
-              <filter id="cSmooth" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.2"/></filter>
+              <filter id="cSmooth" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.2"/><feComponentTransfer><feFuncR type="linear" slope="1.12" intercept=".045"/><feFuncG type="linear" slope="1.12" intercept=".045"/><feFuncB type="linear" slope="1.12" intercept=".045"/></feComponentTransfer></filter>
             </defs>
-            <image href="assets/C2.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice"/>
+            <image href="assets/C2.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice" filter="url(#hiKey)"/>
             <!-- ===== Before/After 真人素材分屏 ===== -->
             <!-- DAY7（after）=左：高斯柔化+水润 -->
             <g clip-path="url(#cLhalf)"><image href="assets/C2.jpg" x="0" y="0" width="236" height="460" preserveAspectRatio="xMidYMid slice" filter="url(#cSmooth)"/></g>
@@ -481,34 +460,22 @@
             <g stroke="#766b70" stroke-width=".8" fill="none" opacity=".5"><path d="M150 233 q5 2 9 0"/><path d="M148 243 q6 2 10 -1"/><path d="M154 251 q5 2 9 0"/><path d="M150 225 q5 2 9 0"/></g>
             <g fill="#cdbfae" opacity=".32"><circle cx="154" cy="237" r=".8"/><circle cx="158" cy="247" r=".8"/><circle cx="150" cy="231" r=".7"/></g>
             <g fill="#b05a4e" opacity=".15"><circle cx="158" cy="243" r="3"/></g>
-            <!-- 顶部压暗 -->
-            <rect x="0" y="0" width="236" height="132" fill="url(#cTop)"/>
-            <!-- 国籍：美国 -->
-            <g filter="url(#cSh)"><rect x="11" y="35" width="50" height="16" rx="4" fill="#fff"/></g>
-            <rect x="15" y="37.5" width="20" height="11" fill="#fff"/>
-            <g fill="#b22234"><rect x="15" y="37.5" width="20" height="1.55"/><rect x="15" y="40.6" width="20" height="1.55"/><rect x="15" y="43.7" width="20" height="1.55"/><rect x="15" y="46.8" width="20" height="1.55"/></g>
-            <rect x="15" y="37.5" width="9" height="6" fill="#3c3b6e"/>
-            <text x="48" y="47.4" text-anchor="middle" fill="#15151b" class="cred">USA</text>
-            <!-- 背书：五星 + REAL CUSTOMER（同一行，避让钩子大字） -->
-            <g fill="#ffcf57" stroke="none"><use href="#i-star" x="108" y="42" width="8" height="8"/><use href="#i-star" x="116" y="42" width="8" height="8"/><use href="#i-star" x="124" y="42" width="8" height="8"/><use href="#i-star" x="132" y="42" width="8" height="8"/><use href="#i-star" x="140" y="42" width="8" height="8"/></g>
-            <text x="150" y="49" text-anchor="start" fill="#fff" class="cred" style="font-size:6.2px;opacity:.95" filter="url(#cSh)">REAL CUSTOMER</text>
-            <!-- 钩子大字 -->
-            <rect x="47" y="60" width="142" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="78" text-anchor="middle" fill="#fff" class="hook">I TRIED IT FOR</text>
-            <rect x="30" y="88" width="177" height="25" rx="7" fill="#0d0d12" fill-opacity=".6"/><text x="118" y="106" text-anchor="middle" fill="#fff" class="hook">7 DAYS · NO FILTER</text>
-            <!-- 分屏：分割线 + DAY 标签 + 肤质 + 法令纹红圈 -->
-            <line x1="118" y1="118" x2="118" y2="300" stroke="#fff" stroke-width="2" opacity=".7"/>
-            <rect x="14" y="118" width="56" height="22" rx="11" fill="#fff" filter="url(#cSh)"/><text x="42" y="133" text-anchor="middle" fill="#bf8a3f" class="tag">DAY 7</text>
-            <rect x="166" y="118" width="56" height="22" rx="11" fill="#000" fill-opacity=".5"/><text x="194" y="133" text-anchor="middle" fill="#fff" class="tag">DAY 1</text>
-            <text x="58" y="246" text-anchor="middle" fill="#7a5320" class="tag-s">Plump · dewy</text>
-            <text x="176" y="246" text-anchor="middle" fill="#eee" class="tag-s">Dry · flaky</text>
-            <ellipse cx="150" cy="198" rx="12" ry="27" fill="none" stroke="#ff5a4a" stroke-width="2.6" transform="rotate(-18 150 198)"/>
-            <!-- 高亮关键词 -->
-            <g filter="url(#cSh)"><rect x="58" y="262" width="120" height="26" rx="8" fill="#fff"/></g>
-            <text x="118" y="280" text-anchor="middle" fill="#bf8a3f" class="hook">REAL RESULTS</text>
+            <!-- 钩子区柔渐变（无黑底块） -->
+            <rect x="0" y="150" width="236" height="150" fill="url(#hookGrad)"/>
+            <!-- 分屏分割线 -->
+            <line x1="118" y1="116" x2="118" y2="300" stroke="#fff" stroke-width="1.6" opacity=".7"/>
+            <!-- DAY 标签：白字描影，无底块 -->
+            <text x="58" y="132" text-anchor="middle" fill="#fff" class="fday" filter="url(#txShadow)">DAY 7</text>
+            <text x="178" y="132" text-anchor="middle" fill="#fff" class="fday" filter="url(#txShadow)">DAY 1</text>
+            <!-- 法令纹改善红圈 -->
+            <ellipse cx="150" cy="196" rx="11" ry="25" fill="none" stroke="#ff5a4a" stroke-width="2.2" transform="rotate(-18 150 196)"/>
+            <!-- 钩子：编辑感（细体小字 + 衬线大字） -->
+            <text x="14" y="248" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">7 days · no filter</text>
+            <text x="14" y="278" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">REAL RESULTS</text>
           </svg>
           <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
           <div class="overlay">
-            <div class="handle">@mia.everyday</div>
+            <div class="handle">@mia.everyday 🇺🇸</div>
             <div class="sponsor">Paid partnership · #ad</div>
             <div class="cap">"7 days of dry, flaky winter skin → finally calm & comfortable. No filter."</div>
             <div class="tags">#beforeandafter #dryskin #glowup</div>
