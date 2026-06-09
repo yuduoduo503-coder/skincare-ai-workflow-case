@@ -100,11 +100,20 @@
   /* 底部信息区：纵向正常流，互不重叠 */
   .overlay{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:26px 12px 12px;
     background:linear-gradient(transparent,rgba(0,0,0,.18) 22%,rgba(0,0,0,.72))}
-  .overlay .handle{font-size:11.5px;font-weight:700;margin-bottom:3px}
-  .overlay .cap{font-size:11.5px;font-weight:600;line-height:1.4;margin-bottom:4px;
-    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-  .overlay .tags{font-size:10.5px;color:#9ad8ff;margin-bottom:6px;line-height:1.4}
-  .overlay .shopbtn{display:block;background:rgba(255,255,255,.96);color:#15151b;font-size:11px;font-weight:700;text-align:center;padding:8px;border-radius:9px}
+  .overlay .handle{font-size:12px;font-weight:800;margin-bottom:3px}
+  .overlay .cap{font-size:11px;font-weight:600;line-height:1.42;margin-bottom:7px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .overlay .cap .h{font-weight:600}                 /* 内联话题标签：与正文同色（TikTok 实际为白色，非蓝） */
+  .overlay .cap .more{opacity:.6}
+  /* 声音/原声行 */
+  .overlay .sound{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;opacity:.95;margin-bottom:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .overlay .sound .icn{width:12px;height:12px}
+  /* TikTok Shop 锚点：左对齐紧凑胶囊（非整宽按钮） */
+  .overlay .shopbtn{display:inline-flex;align-items:center;gap:6px;max-width:100%;background:rgba(255,255,255,.96);color:#15151b;font-size:10.5px;font-weight:700;padding:6px 9px;border-radius:9px;white-space:nowrap}
+  .overlay .shopbtn .icn{width:13px;height:13px;color:#15151b}
+  .overlay .shopbtn .nm{overflow:hidden;text-overflow:ellipsis}
+  .overlay .shopbtn .price{color:#e8462d;font-weight:800}
+  .overlay .shopbtn .chev{opacity:.45;font-weight:700;margin-left:1px}
   /* 场景内文字标签 */
   .scene .tag{font:700 10px/1.2 inherit}
   .scene .tag-s{font:600 8px/1.2 inherit}
@@ -181,6 +190,8 @@
   <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></symbol>
   <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.2 8.3A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.7L14 9V3M7.5 14h9"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="16.5" cy="16" r="2.6"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4.2L6 20z"/></symbol>
   <!-- 视频首帧用：文字柔影 / 高调提亮 / 钩子区柔渐变（全文档可 url() 引用） -->
   <filter id="txShadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity=".62"/></filter>
   <filter id="hiKey"><feComponentTransfer><feFuncR type="linear" slope="1.12" intercept="0.035"/><feFuncG type="linear" slope="1.12" intercept="0.035"/><feFuncB type="linear" slope="1.12" intercept="0.04"/></feComponentTransfer><feColorMatrix type="saturate" values="1.06"/></filter>
@@ -402,13 +413,13 @@
             <text x="14" y="240" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">i wrecked my barrier</text>
             <text x="14" y="270" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">CERAMIDE NP</text>
           </svg>
-          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>48.2k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>1.3k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>2.1k</div></div>
+          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>48.2k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>1.3k</div><div><div class="ico"><svg class="icn"><use href="#i-bookmark"/></svg></div>5.7k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>2.1k</div></div>
           <div class="overlay">
             <div class="handle">@theglowlab 🇺🇸</div>
             <div class="sponsor">Paid partnership · #ad</div>
-            <div class="cap">"I destroyed my skin barrier with too many actives — here's the one ingredient that actually helped."</div>
-            <div class="tags">#skinbarrier #ceramides #skincycling #fyp</div>
-            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> Linked in TikTok Shop</div>
+            <div class="cap">actives wrecked my barrier. <span class="h">#skinbarrier #ceramides</span> <span class="more">more</span></div>
+            <div class="sound"><svg class="icn"><use href="#i-music"/></svg> original sound · theglowlab</div>
+            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> <span class="nm">Ceramide Barrier Cream</span> <span class="price">$24</span> <span class="chev">›</span></div>
           </div>
         </div><figcaption>版本 A · 成分党科学测评钩子</figcaption></div>
 
@@ -425,13 +436,13 @@
             <text x="14" y="240" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">my esthetician's secret</text>
             <text x="14" y="270" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">SKIN CYCLING</text>
           </svg>
-          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>71.9k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>2.6k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>4.4k</div></div>
+          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>71.9k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>2.6k</div><div><div class="ico"><svg class="icn"><use href="#i-bookmark"/></svg></div>9.1k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>4.4k</div></div>
           <div class="overlay">
             <div class="handle">@esther.skincoach 🇬🇧</div>
             <div class="sponsor">Paid partnership · #ad</div>
-            <div class="cap">"Skin cycling recovery night — the only cream that helped my barrier feel calm again."</div>
-            <div class="tags">#skincycling #dermatologist #sensitiveskin</div>
-            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> Shop now · 18% off code</div>
+            <div class="cap">skin cycling recovery night, finally calm. <span class="h">#skincycling #barrier</span> <span class="more">more</span></div>
+            <div class="sound"><svg class="icn"><use href="#i-music"/></svg> original sound · esther.skincoach</div>
+            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> <span class="nm">Barrier Repair Cream</span> <span class="price">£19</span> <span class="chev">›</span></div>
           </div>
         </div><figcaption>版本 B · Esthetician 教育种草钩子</figcaption></div>
 
@@ -473,13 +484,13 @@
             <text x="14" y="248" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">7 days · no filter</text>
             <text x="14" y="278" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">REAL RESULTS</text>
           </svg>
-          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
+          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-bookmark"/></svg></div>4.2k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
           <div class="overlay">
             <div class="handle">@mia.everyday 🇺🇸</div>
             <div class="sponsor">Paid partnership · #ad</div>
-            <div class="cap">"7 days of dry, flaky winter skin → finally calm & comfortable. No filter."</div>
-            <div class="tags">#beforeandafter #dryskin #glowup</div>
-            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> Tap to shop the cream</div>
+            <div class="cap">dry → calm in 7 days, no filter. <span class="h">#beforeandafter #dryskin</span> <span class="more">more</span></div>
+            <div class="sound"><svg class="icn"><use href="#i-music"/></svg> original sound · mia.everyday</div>
+            <div class="shopbtn"><svg class="icn"><use href="#i-cart"/></svg> <span class="nm">Ceramide Cream</span> <span class="price">$24</span> <span class="chev">›</span></div>
           </div>
         </div><figcaption>版本 C · 素人 7 天 Before/After</figcaption></div>
       </div>
