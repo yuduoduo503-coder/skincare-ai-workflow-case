@@ -95,8 +95,16 @@
   /* #ad 披露：移到底部用户名下方，避免与摄像头刘海重叠（也更贴近 TikTok 真实排版） */
   .overlay .sponsor{display:inline-block;background:rgba(0,0,0,.42);font-size:9px;font-weight:600;color:rgba(255,255,255,.92);padding:2.5px 7px;border-radius:5px;margin-bottom:4px;letter-spacing:.02em}
   /* 右侧互动栏 */
-  .ui-right{position:absolute;right:9px;bottom:128px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center;font-size:10.5px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
-  .ui-right .ico{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:3px}
+  .ui-right{position:absolute;right:8px;bottom:14px;z-index:6;display:flex;flex-direction:column;gap:12px;align-items:center;font-size:10px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+  .ui-right .act{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .ui-right .act .icn{width:28px;height:28px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+  /* 头像 + 关注红➕ */
+  .ui-right .avatar{position:relative;width:40px;height:40px;border-radius:50%;border:1.6px solid #fff;background-size:cover;background-position:center 42%;margin-bottom:7px;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+  .ui-right .avatar .plus{position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:#fe2c55;color:#fff;font-size:13px;line-height:15px;font-weight:800;text-align:center;border:1.4px solid #fff;text-shadow:none}
+  /* 底部旋转音乐唱片 */
+  .ui-right .disc{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle,#444 0 30%,#0c0c0c 32% 100%);display:flex;align-items:center;justify-content:center;animation:spin 4.5s linear infinite;box-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .ui-right .disc i{width:15px;height:15px;border-radius:50%;background-size:cover;background-position:center 42%}
+  @keyframes spin{to{transform:rotate(360deg)}}
   /* 底部信息区：纵向正常流，互不重叠 */
   .overlay{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:26px 12px 12px;
     background:linear-gradient(transparent,rgba(0,0,0,.18) 22%,rgba(0,0,0,.72))}
@@ -413,7 +421,14 @@
             <text x="14" y="240" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">i wrecked my barrier</text>
             <text x="14" y="270" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">CERAMIDE NP</text>
           </svg>
-          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>48.2k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>1.3k</div><div><div class="ico"><svg class="icn"><use href="#i-bookmark"/></svg></div>5.7k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>2.1k</div></div>
+          <div class="ui-right">
+            <div class="avatar" style="background-image:url(assets/A6.jpg)"><span class="plus">+</span></div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-heart"/></svg>48.2k</div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-comment"/></svg>1.3k</div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-bookmark"/></svg>5.7k</div>
+            <div class="act"><svg class="icn"><use href="#i-share"/></svg>2.1k</div>
+            <div class="disc"><i style="background-image:url(assets/A6.jpg)"></i></div>
+          </div>
           <div class="overlay">
             <div class="handle">@theglowlab 🇺🇸</div>
             <div class="sponsor">Paid partnership · #ad</div>
@@ -436,7 +451,14 @@
             <text x="14" y="240" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">my esthetician's secret</text>
             <text x="14" y="270" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">SKIN CYCLING</text>
           </svg>
-          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>71.9k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>2.6k</div><div><div class="ico"><svg class="icn"><use href="#i-bookmark"/></svg></div>9.1k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>4.4k</div></div>
+          <div class="ui-right">
+            <div class="avatar" style="background-image:url(assets/B1.jpg)"><span class="plus">+</span></div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-heart"/></svg>71.9k</div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-comment"/></svg>2.6k</div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-bookmark"/></svg>9.1k</div>
+            <div class="act"><svg class="icn"><use href="#i-share"/></svg>4.4k</div>
+            <div class="disc"><i style="background-image:url(assets/B1.jpg)"></i></div>
+          </div>
           <div class="overlay">
             <div class="handle">@esther.skincoach 🇬🇧</div>
             <div class="sponsor">Paid partnership · #ad</div>
@@ -484,7 +506,14 @@
             <text x="14" y="248" text-anchor="start" fill="#fff" class="fsm" filter="url(#txShadow)">7 days · no filter</text>
             <text x="14" y="278" text-anchor="start" fill="#fff" class="flg" filter="url(#txShadow)">REAL RESULTS</text>
           </svg>
-          <div class="ui-right"><div><div class="ico"><svg class="icn"><use href="#i-heart"/></svg></div>33.5k</div><div><div class="ico"><svg class="icn"><use href="#i-comment"/></svg></div>980</div><div><div class="ico"><svg class="icn"><use href="#i-bookmark"/></svg></div>4.2k</div><div><div class="ico"><svg class="icn"><use href="#i-share"/></svg></div>1.7k</div></div>
+          <div class="ui-right">
+            <div class="avatar" style="background-image:url(assets/C2.jpg);background-position:center 10%"><span class="plus">+</span></div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-heart"/></svg>33.5k</div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-comment"/></svg>980</div>
+            <div class="act"><svg class="icn" style="fill:#fff;stroke:none"><use href="#i-bookmark"/></svg>4.2k</div>
+            <div class="act"><svg class="icn"><use href="#i-share"/></svg>1.7k</div>
+            <div class="disc"><i style="background-image:url(assets/C2.jpg);background-position:center 10%"></i></div>
+          </div>
           <div class="overlay">
             <div class="handle">@mia.everyday 🇺🇸</div>
             <div class="sponsor">Paid partnership · #ad</div>
