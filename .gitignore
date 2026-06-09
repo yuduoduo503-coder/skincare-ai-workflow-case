@@ -4,3 +4,4 @@ assets/*.jpg
 !assets/B1.jpg
 !assets/C2.jpg
 ref/
+!assets/C1.jpg
