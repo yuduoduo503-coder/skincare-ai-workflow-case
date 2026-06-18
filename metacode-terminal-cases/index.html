@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaCode 拟真终端使用案例</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%,#16203a 0%,#07090f 60%);
+    min-height:100vh;color:#e6edf3;padding:48px 18px 60px;display:flex;
+    flex-direction:column;align-items:center}
+  .head{text-align:center;margin-bottom:34px;max-width:640px}
+  .badge{display:inline-block;background:rgba(124,107,255,.18);color:#bc8cff;
+    font-size:12px;padding:4px 13px;border-radius:20px;margin-bottom:14px;letter-spacing:.5px}
+  h1{font-size:26px;font-weight:700;letter-spacing:.5px}
+  .sub{font-size:14px;color:#8b949e;margin-top:10px;line-height:1.7}
+  .grid{display:grid;gap:16px;width:min(760px,100%)}
+  a.card{display:block;text-decoration:none;color:inherit;background:#0d1117;
+    border:1px solid #2a3140;border-radius:14px;padding:20px 22px;transition:.18s}
+  a.card:hover{border-color:#7c6bff;transform:translateY(-2px);
+    box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .ct{display:flex;align-items:center;gap:12px}
+  .emoji{font-size:26px}
+  .ctitle{font-size:17px;font-weight:700}
+  .cdesc{font-size:13px;color:#8b949e;margin-top:9px;line-height:1.7}
+  .tag{display:inline-block;font-size:11px;color:#7ee787;border:1px solid #2f5d3a;
+    background:rgba(63,185,80,.08);padding:2px 9px;border-radius:6px;margin-top:12px}
+  .foot{margin-top:30px;font-size:12px;color:#6e7681;text-align:center;line-height:1.7}
+</style>
+</head>
+<body>
+  <div class="head">
+    <span class="badge">MetaCode 行业案例 · 拟真使用演示</span>
+    <h1>MetaCode 拟真终端使用案例</h1>
+    <p class="sub">按真实界面还原的使用过程动画 —— 你只说一句大白话，它自己读资料、动手干、出成果。点开任意一个查看。</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="2-sales-report.html">
+      <div class="ct"><span class="emoji">📊</span><span class="ctitle">一句话把订单表格做成销售报告</span></div>
+      <div class="cdesc">丢一份订单 CSV，它自动算出销售额、爆款、趋势，生成一页带图表、能直接发群的报告。</div>
+      <span class="tag">推荐 · 最贴近日常</span>
+    </a>
+    <a class="card" href="3-legal-review.html">
+      <div class="ct"><span class="emoji">⚖️</span><span class="ctitle">审查合同，标注不合理与法律风险条款</span></div>
+      <div class="cdesc">逐条审一份合作协议，按高/中/低风险标注问题，给出原文、风险说明与修改建议，体现专业严谨。</div>
+      <span class="tag">专业 · 严谨</span>
+    </a>
+    <a class="card" href="1-fix-bug.html">
+      <div class="ct"><span class="emoji">🐛</span><span class="ctitle">一句话查清并修好一个 Bug</span></div>
+      <div class="cdesc">报一个现象，它自己搜代码、定位根因、动手修、跑测试通过，最后提交。</div>
+      <span class="tag">技术能力</span>
+    </a>
+  </div>
+
+  <div class="foot">
+    ⬢ 本案例由 MetaCode 生成 · 画面为按真实界面还原的模拟演示，数据均为虚构
+  </div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaCode · 实战修复 Bug 拟真演示</title>
+<style>
+  :root{
+    --term:#0d1117; --green:#3fb950; --cyan:#39c5cf; --yellow:#e3b341;
+    --blue:#58a6ff; --mag:#bc8cff; --gray:#8b949e; --white:#e6edf3;
+    --dim:#6e7681; --prompt:#7ee787; --red:#ff7b72; --border:#30363d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 50% -10%, #16203a 0%, #07090f 60%);
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    font-family:"SF Mono","JetBrains Mono","Menlo","Consolas",monospace;
+    padding:32px 16px 60px;color:var(--white);
+  }
+  .title{margin-bottom:18px;text-align:center}
+  .title h1{font-size:20px;font-weight:600;letter-spacing:.5px;color:#fff}
+  .title p{font-size:13px;color:var(--gray);margin-top:6px}
+
+  .window{
+    width:min(900px,100%);background:var(--term);border-radius:12px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);
+    overflow:hidden;
+  }
+  .titlebar{
+    height:38px;background:linear-gradient(#262d3b,#1c2230);
+    display:flex;align-items:center;padding:0 14px;gap:8px;
+    border-bottom:1px solid rgba(0,0,0,.4);
+  }
+  .dot{width:12px;height:12px;border-radius:50%}
+  .r{background:#ff5f56}.y{background:#ffbd2e}.g{background:#27c93f}
+  .tb-title{flex:1;text-align:center;font-size:12px;color:var(--gray);
+    margin-left:-52px;letter-spacing:.3px}
+
+  .screen{
+    padding:16px 18px 20px;font-size:13.5px;line-height:1.7;
+    height:620px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;
+  }
+  .screen::-webkit-scrollbar{width:10px}
+  .screen::-webkit-scrollbar-thumb{background:#2a3140;border-radius:8px}
+
+  .line{opacity:0}
+  .line.show{opacity:1;animation:fade .22s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
+
+  .prompt{color:var(--prompt)}
+  .path{color:var(--blue)}
+  .dim{color:var(--dim)}
+  .gray{color:var(--gray)}
+  .ok{color:var(--green)}
+  .info{color:var(--cyan)}
+  .warn{color:var(--yellow)}
+  .mag{color:var(--mag)}
+  .red{color:var(--red)}
+  .white{color:var(--white)}
+
+  /* 圆点：AI 的每一步 */
+  .bullet{color:var(--white)}
+  .bullet.act{color:var(--green)}
+  .tname{color:var(--white);font-weight:600}
+  .targ{color:var(--gray)}
+  .res{color:var(--dim)}
+
+  /* MetaCode 启动框 / 输入框 —— 真实那种圆角边框 */
+  .box{
+    border:1px solid var(--border);border-radius:7px;
+    padding:9px 13px;margin:6px 0;line-height:1.65;
+  }
+  .box.welcome{border-color:#2d4a63}
+  .box.input{border-color:#3b4654}
+  .caret-gt{color:var(--prompt);font-weight:600}
+
+  .cursor{display:inline-block;width:8px;height:16px;background:var(--white);
+    vertical-align:-3px;margin-left:1px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .spin{color:var(--mag)}
+
+  .controls{margin-top:18px;display:flex;gap:10px}
+  button{
+    background:#1f6feb;color:#fff;border:0;padding:9px 18px;border-radius:8px;
+    font-size:13px;font-family:inherit;cursor:pointer;transition:.15s;
+  }
+  button:hover{background:#388bfd}
+  button.ghost{background:#21262d;color:var(--gray)}
+  button.ghost:hover{background:#2d333b;color:#fff}
+  .hint{margin-top:12px;font-size:12px;color:var(--dim);text-align:center}
+</style>
+</head>
+<body>
+  <div class="title">
+    <h1>MetaCode 实战：一句话，自动查清并修好 Bug</h1>
+    <p>真实界面还原 —— 你只说现象，它自己搜代码、定位根因、动手改、跑测试</p>
+  </div>
+
+  <div class="window">
+    <div class="titlebar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="tb-title">我的网站 — metacode — zsh</span>
+    </div>
+    <div class="screen" id="screen"></div>
+  </div>
+
+  <div class="controls">
+    <button id="replay">▶ 重新播放</button>
+    <button class="ghost" id="skip">⏭ 直接看结果</button>
+  </div>
+  <div class="hint">提示：这是按真实界面还原的模拟效果，用于讲解；实际界面以你电脑上的 MetaCode 为准。</div>
+
+<script>
+// 每条：[html, 打完后停顿ms, 是否逐字敲入, 类型]
+const script = [
+  // ── 启动 ──
+  ['<span class="prompt">~/我的网站</span> <span class="dim">%</span> ', 300, false, 'anchor'],
+  ['__TYPE__metacode', 650, true],
+  ['', 250, false],
+
+  // 真实启动框
+  ['<div class="box welcome"><span class="mag">✻ Welcome to MetaCode</span>\n\n  <span class="dim">/help 查看帮助 · /status 查看账户</span>\n\n  <span class="dim">cwd: ~/我的网站</span></div>', 700, false],
+  ['<span class="dim">用大白话说需求就行，剩下交给我。</span>', 600, false],
+  ['', 200, false],
+
+  // ── 用户输入（带框）──
+  ['<div class="box input"><span class="caret-gt">&gt;</span> </div>', 200, false, 'raw-anchor'],
+  ['__TYPE__用户反馈：手机上点“立即注册”按钮没反应，帮我查一下，修好它', 750, true],
+  ['', 300, false],
+
+  // 思考转圈（真实那种）
+  ['<span class="spin">✻</span> <span class="dim">Thinking… (3s · ↑ 1.2k tokens · esc 中断)</span>', 700, false],
+  ['', 120, false],
+
+  // AI 第一步：说计划
+  ['<span class="bullet">⏺</span> 好，我先在代码里找到“立即注册”按钮相关的地方。', 600, false],
+  ['', 100, false],
+
+  // Search
+  ['<span class="bullet act">⏺</span> <span class="tname">Search</span><span class="targ">(pattern: "立即注册")</span>', 350, false],
+  ['  <span class="res">⎿ 找到 3 处匹配：</span>', 200, false],
+  ['     <span class="res">src/pages/Signup.jsx</span>', 130, false],
+  ['     <span class="res">src/components/Button.jsx</span>', 130, false],
+  ['     <span class="res">src/styles.css</span>', 450, false],
+
+  // Read 两个文件
+  ['<span class="bullet act">⏺</span> <span class="tname">Read</span><span class="targ">(src/components/Button.jsx)</span>', 300, false],
+  ['  <span class="res">⎿ 已读取 64 行</span>', 350, false],
+  ['<span class="bullet act">⏺</span> <span class="tname">Read</span><span class="targ">(src/styles.css)</span>', 300, false],
+  ['  <span class="res">⎿ 已读取 120 行</span>', 600, false],
+  ['', 120, false],
+
+  // 定位根因
+  ['<span class="bullet">⏺</span> 找到原因了：注册按钮上盖了一层透明的“光晕”装饰。', 480, false],
+  ['  电脑端没影响，但手机端这层光晕会把点击拦截掉，所以点不动。', 650, false],
+  ['', 120, false],
+
+  // 修改 styles.css，显示真实 diff
+  ['<span class="bullet act">⏺</span> <span class="tname">Update</span><span class="targ">(src/styles.css)</span>', 300, false],
+  ['  <span class="res">⎿ 新增 1 行：</span>', 200, false],
+  ['     <span class="dim">41</span>   .glow {', 110, false],
+  ['     <span class="ok">42 +   pointer-events: none;</span>   <span class="dim">/* 让光晕不再拦截点击 */</span>', 110, false],
+  ['     <span class="dim">43</span>   }', 450, false],
+
+  // 修改 Button.jsx
+  ['<span class="bullet act">⏺</span> <span class="tname">Update</span><span class="targ">(src/components/Button.jsx)</span>', 300, false],
+  ['  <span class="res">⎿ 改动 2 处（+2 −1），调整按钮层级</span>', 600, false],
+  ['', 120, false],
+
+  // 跑测试
+  ['<span class="bullet">⏺</span> 改完了，跑一下测试，确认没碰坏其它地方。', 450, false],
+  ['<span class="bullet act">⏺</span> <span class="tname">Bash</span><span class="targ">(npm test)</span>', 450, false],
+  ['  <span class="res">⎿ Test Suites: 6 passed, 6 total</span>', 250, false],
+  ['     <span class="ok">Tests:       28 passed, 28 total  (3.2s)</span>', 650, false],
+  ['', 120, false],
+
+  // 总结
+  ['<span class="bullet">⏺</span> 搞定 ✅ 手机端现在能正常点“立即注册”了。', 420, false],
+  ['  <span class="dim">根因：</span>装饰光晕拦截了点击 → 已让它“点击穿透”。', 420, false],
+  ['  <span class="dim">改动：</span>2 个文件、共 3 行；28 个测试全部通过。', 700, false],
+  ['', 220, false],
+
+  // ── 第二轮：提交 ──
+  ['<div class="box input"><span class="caret-gt">&gt;</span> </div>', 200, false, 'raw-anchor'],
+  ['__TYPE__太好了，帮我把这次修复提交一下', 700, true],
+  ['', 280, false],
+  ['<span class="bullet act">⏺</span> <span class="tname">Bash</span><span class="targ">(git commit -am "fix: 修复手机端注册按钮无法点击")</span>', 450, false],
+  ['  <span class="res">⎿ [main 7f3a2c1] fix: 修复手机端注册按钮无法点击</span>', 250, false],
+  ['     <span class="res">2 files changed, 4 insertions(+), 1 deletion(-)</span>', 500, false],
+  ['<span class="bullet">⏺</span> 已提交 ✅ 这次修复记录好了。', 500, false],
+  ['', 180, false],
+
+  // 末尾空输入框 + 光标
+  ['<div class="box input"><span class="caret-gt">&gt;</span> <span class="cursor"></span></div>', 0, false],
+  ['<span class="dim">  ? 查看快捷键 · ↑ 历史 · Ctrl+L 清屏</span>', 0, false],
+];
+
+const screen = document.getElementById('screen');
+let timer = null;
+
+function clearAll(){ if(timer) clearTimeout(timer); screen.innerHTML=''; }
+
+// 逐字打入的目标：输入框内容区
+function anchorTarget(){
+  const last = screen.lastElementChild;
+  if(!last) return null;
+  const box = last.querySelector('.box.input') || last.querySelector('.box');
+  return box || last;
+}
+
+function typeInto(el, text, done){
+  let i=0;
+  const cur=document.createElement('span'); cur.className='cursor';
+  el.appendChild(cur);
+  (function step(){
+    if(i<text.length){
+      el.insertBefore(document.createTextNode(text[i]), cur);
+      i++;
+      timer=setTimeout(step, 34+Math.floor((i%3)*15));
+    } else { cur.remove(); done&&done(); }
+  })();
+}
+
+function play(idx){
+  if(idx>=script.length) return;
+  const [html, pause, isType] = script[idx];
+
+  if(isType && html.startsWith('__TYPE__')){
+    const target = anchorTarget();
+    typeInto(target, html.replace('__TYPE__',''), ()=>{
+      screen.scrollTop=screen.scrollHeight;
+      timer=setTimeout(()=>play(idx+1), pause);
+    });
+    return;
+  }
+
+  const div=document.createElement('div');
+  div.className='line show';
+  div.innerHTML = html || '&nbsp;';
+  screen.appendChild(div);
+  screen.scrollTop=screen.scrollHeight;
+  timer=setTimeout(()=>play(idx+1), pause);
+}
+
+function showAll(){
+  clearAll();
+  script.forEach(([html])=>{
+    if(html.startsWith('__TYPE__')){
+      const t=anchorTarget(); if(t) t.appendChild(document.createTextNode(html.replace('__TYPE__','')));
+      return;
+    }
+    const div=document.createElement('div');
+    div.className='line show';
+    div.innerHTML=html||'&nbsp;';
+    screen.appendChild(div);
+  });
+  screen.scrollTop=screen.scrollHeight;
+}
+
+function start(){ clearAll(); play(0); }
+
+document.getElementById('replay').onclick=start;
+document.getElementById('skip').onclick=showAll;
+start();
+</script>
+</body>
+</html>
